@@ -2131,7 +2131,7 @@ END:VCARD`
       { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "🥷 𝘖𝘸𝘯𝘦𝘳" }, type: 1 }
     ];
 
-    const defaultImg = 'https://i.ibb.co/KxrG6Fpm/IMG-20251011-WA0084.jpg';
+    const defaultImg = 'https://files.catbox.moe/6l4j8x.jpeg';
     const useLogo = userCfg.logo || defaultImg;
 
     // build image payload (url or buffer)
@@ -5105,6 +5105,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 

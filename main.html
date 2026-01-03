@@ -21,12 +21,12 @@ body {
   position: relative;
 }
 
-/* Dark overlay */
+/* Dark overlay with red tint */
 body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(30, 0, 0, 0.75);
   z-index: 0;
 }
 
@@ -39,16 +39,18 @@ body::before {
 .box {
   width: 320px;
   padding: 20px;
-  background: rgba(17,17,17,0.9);
+  background: rgba(20, 0, 0, 0.9);
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 0 20px #00f2ff;
+  box-shadow: 0 0 20px #ff0033, 0 0 30px #ff0033;
+  border: 1px solid #ff0033;
 }
 
 /* ================= TEXT ================= */
 h3, h6 {
-  color: #00f2ff;
+  color: #ff0033;
   margin: 8px 0;
+  text-shadow: 0 0 5px #ff0033;
 }
 
 /* ================= INPUT ================= */
@@ -65,6 +67,13 @@ h3, h6 {
   border-radius: 0.8rem 0 0 0.8rem;
   padding-left: 1rem;
   font-size: 1rem;
+  background: rgba(40, 0, 0, 0.8);
+  color: white;
+  border: 1px solid #ff0033;
+}
+
+.input-container input::placeholder {
+  color: #ff6666;
 }
 
 .input-container button {
@@ -72,28 +81,30 @@ h3, h6 {
   height: 3rem;
   border: none;
   cursor: pointer;
-  background: #00bfff;
+  background: #ff0033;
   color: white;
   font-weight: bold;
   border-radius: 0 0.8rem 0.8rem 0;
+  transition: all 0.3s ease;
 }
 
 .input-container button:hover {
-  background: #00ffff;
-  color: black;
+  background: #ff3366;
+  box-shadow: 0 0 10px #ff0033;
 }
 
 .centered-text {
-  color: white;
+  color: #ffcccc;
   font-weight: bold;
   margin-top: 15px;
 }
 
 /* ================= TIME ================= */
 #time {
-  color: #00ffff;
+  color: #ff3366;
   font-weight: bold;
   margin-bottom: 10px;
+  text-shadow: 0 0 3px #ff0033;
 }
 
 /* ================= SNOW ================= */
@@ -112,7 +123,7 @@ h3, h6 {
   top: -10px;
   width: 6px;
   height: 6px;
-  background: white;
+  background: #ff6666;
   border-radius: 50%;
   opacity: 0.8;
   animation: snow linear infinite;
@@ -129,10 +140,11 @@ h3, h6 {
   position: fixed;
   width: 4px;
   height: 4px;
-  background: #00ffff;
+  background: #ff0033;
   border-radius: 50%;
   opacity: 0.6;
   animation: float 6s infinite ease-in-out;
+  box-shadow: 0 0 5px #ff0033;
 }
 
 @keyframes float {
@@ -140,22 +152,57 @@ h3, h6 {
   50% { transform: translateY(-20px); }
   100% { transform: translateY(0); }
 }
+
+/* ================= ICONS ================= */
+.fa-user {
+  color: #ff0033 !important;
+  text-shadow: 0 0 5px #ff0033;
+}
+
+/* ================= COPY BUTTON ================= */
+#copy {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background: rgba(40, 0, 0, 0.8);
+  border: 1px solid #ff0033;
+}
+
+#copy:hover {
+  background: rgba(60, 0, 0, 0.9);
+  box-shadow: 0 0 10px #ff0033;
+}
+
+/* ================= MESSAGES ================= */
+#pair span {
+  color: #ffcccc;
+}
+
+#pair span[style*="color:red"] {
+  color: #ff3366 !important;
+  text-shadow: 0 0 3px #ff0033;
+}
+
+#pair span[style*="color:white"] {
+  color: #ffcccc !important;
+}
 </style>
 </head>
 
 <body>
 
-<!-- ❄️ SNOW -->
+<!-- ❄️ RED SNOW -->
 <div class="snow" id="snow"></div>
 
-<!-- ✨ PARTICLES -->
+<!-- ✨ RED PARTICLES -->
 <div id="particles"></div>
 
 <div class="container">
   <div class="box">
     <div id="time"></div>
 
-    <i class="fa fa-user" style="color:#00ffff;"></i>
+    <i class="fa fa-user"></i>
     <h3>🐼 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 🐼</h3>
     <h6>Created by 𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍</h6>
     <h6>🔢 𝙴nter 𝚈our 𝙽umber 𝚆ith 𝙲ountry 𝙲ode</h6>
@@ -181,17 +228,18 @@ function updateTime(){
 setInterval(updateTime,1000);
 updateTime();
 
-/* ================= SNOW ================= */
+/* ================= RED SNOW ================= */
 const snow = document.getElementById("snow");
 for(let i=0;i<60;i++){
   let s=document.createElement("span");
   s.style.left=Math.random()*100+"vw";
   s.style.animationDuration=3+Math.random()*5+"s";
   s.style.opacity=Math.random();
+  s.style.background = `rgb(255, ${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*100)})`;
   snow.appendChild(s);
 }
 
-/* ================= PARTICLES ================= */
+/* ================= RED PARTICLES ================= */
 const pBox=document.getElementById("particles");
 for(let i=0;i<25;i++){
   let p=document.createElement("div");
@@ -199,6 +247,7 @@ for(let i=0;i<25;i++){
   p.style.left=Math.random()*100+"vw";
   p.style.top=Math.random()*100+"vh";
   p.style.animationDelay=Math.random()*5+"s";
+  p.style.background = `rgb(255, ${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*100)})`;
   pBox.appendChild(p);
 }
 
@@ -211,23 +260,37 @@ async function Copy(){
   let obj=document.getElementById("copy");
   await navigator.clipboard.writeText(obj.innerText.replace("CODE: ",""));
   obj.innerText="COPIED";
+  obj.style.color = "#ff3366";
   setTimeout(()=>location.reload(),800);
 }
 
 b.onclick=async()=>{
   if(!c.value){
-    a.innerHTML='<span style="color:white">Enter your WhatsApp number</span>';
+    a.innerHTML='<span style="color:#ffcccc">Enter your WhatsApp number</span>';
     return;
   }
   const num=c.value.replace(/\D/g,"");
   if(num.length<11){
-    a.innerHTML='<span style="color:red">Invalid Number</span>';
+    a.innerHTML='<span style="color:#ff3366">Invalid Number</span>';
     return;
   }
-  a.innerHTML='<span style="color:white">Please Wait...</span>';
-  let {data}=await axios(`/code?number=${num}`);
-  a.innerHTML=`<div id="copy" onclick="Copy()" style="color:red;font-size:20px;font-weight:bold">CODE: <span style="color:white">${data.code||"Unavailable"}</span></div>`;
+  a.innerHTML='<span style="color:#ffcccc">Please Wait...</span>';
+  try {
+    let {data}=await axios(`/code?number=${num}`);
+    a.innerHTML=`<div id="copy" onclick="Copy()" style="color:#ff3366;font-size:20px;font-weight:bold">CODE: <span style="color:#ffcccc">${data.code||"Unavailable"}</span></div>`;
+  } catch {
+    a.innerHTML='<span style="color:#ff3366">Error getting code</span>';
+  }
 };
+
+// Add red glow effect to input on focus
+c.addEventListener('focus', function() {
+  this.style.boxShadow = '0 0 10px #ff0033';
+});
+
+c.addEventListener('blur', function() {
+  this.style.boxShadow = 'none';
+});
 </script>
 
 </body>

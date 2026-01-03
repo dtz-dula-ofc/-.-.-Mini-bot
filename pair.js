@@ -27,7 +27,7 @@ const {
 
 // ---------------- CONFIG ----------------
 
-const BOT_NAME_FANCY = ' 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+const BOT_NAME_FANCY = 'Dtz_Nova_Xmd';
 
 const config = {
   AUTO_VIEW_STATUS: 'true',
@@ -36,24 +36,24 @@ const config = {
   AUTO_LIKE_EMOJI: ['🥋','🎈','👀','❤️‍🔥','💗','😩','🧸','🍉','☘️','🗣️','🌸'],
   PREFIX: '.',
   MAX_RETRIES: 3,
-  GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Hkl27CXZ1s6A9TVt8kN8id',
-  RCD_IMAGE_PATH: 'https://files.catbox.moe/1grtny.png',
-  NEWSLETTER_JID: '120363421408345374@newsletter',
+  GROUP_INVITE_LINK: 'https://chat.whatsapp.com/GYFkafbxbD8JHDCPzXPlIi',
+  RCD_IMAGE_PATH: 'https://files.catbox.moe/fpyw9m.png',
+  NEWSLETTER_JID: '120363406815628638@newsletter',
   OTP_EXPIRY: 300000,
-  OWNER_NUMBER: process.env.OWNER_NUMBER || '94776532488',
+  OWNER_NUMBER: process.env.OWNER_NUMBER || '94752978237',
   CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBwrK8GZNCq5BS4na17',
-  BOT_NAME: ' 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃',
+  BOT_NAME: 'Dtz_Nova_Xmd',
   BOT_VERSION: '1.0.beta',
-  OWNER_NAME: 'Oωηєя Bу ꪶ ᴋʟᴡ : 𝐎𝐋𝐃 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ',
-  IMAGE_PATH: 'https://files.catbox.moe/1grtny.png',
-  BOT_FOOTER: '> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃_MINI_OFC*',
-  BUTTON_IMAGES: { ALIVE: 'https://files.catbox.moe/1grtny.png' }
+  OWNER_NAME: 'Dulina Nethmira',
+  IMAGE_PATH: 'https://files.catbox.moe/fpyw9m.png',
+  BOT_FOOTER: '> *DTZ_NOVA_XMD_MINI_OFC*',
+  BUTTON_IMAGES: { ALIVE: 'https://files.catbox.moe/fpyw9m.png' }
 };
 
 // ---------------- MONGO SETUP ----------------
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://camalkaakash2_db_user:camalkaakash2_db_user@cluster0.ntip7sn.mongodb.net/?appName=Cluster0';
-const MONGO_DB = process.env.MONGO_DB || 'DTZ_UNKNOWN';
+const MONGO_DB = process.env.MONGO_DB || 'Dtz_Dula_MiNi_Ofc';
 
 let mongoClient, mongoDB;
 let sessionsCol, numbersCol, adminsCol, newsletterCol, configsCol, newsletterReactsCol;
@@ -78,7 +78,7 @@ async function initMongo() {
   await newsletterCol.createIndex({ jid: 1 }, { unique: true });
   await newsletterReactsCol.createIndex({ jid: 1 }, { unique: true });
   await configsCol.createIndex({ number: 1 }, { unique: true });
-  console.log('✅ 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 Mongo initialized and collections ready');
+  console.log('✅Dtz_Nova_Xmd Mongo initialized and collections ready');
 }
 
 // ---------------- Mongo helpers ----------------
@@ -89,8 +89,8 @@ async function saveCredsToMongo(number, creds, keys = null) {
     const sanitized = number.replace(/[^0-9]/g, '');
     const doc = { number: sanitized, creds, keys, updatedAt: new Date() };
     await sessionsCol.updateOne({ number: sanitized }, { $set: doc }, { upsert: true });
-    console.log(` 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 Saved creds to Mongo for ${sanitized}`);
-  } catch (e) { console.error(' 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 saveCredsToMongo error:', e); }
+    console.log(`Dtz_Nova_Xmd Saved creds to Mongo for ${sanitized}`);
+  } catch (e) { console.error('Dtz_Nova_Xmd saveCredsToMongo error:', e); }
 }
 
 async function loadCredsFromMongo(number) {
@@ -107,8 +107,8 @@ async function removeSessionFromMongo(number) {
     await initMongo();
     const sanitized = number.replace(/[^0-9]/g, '');
     await sessionsCol.deleteOne({ number: sanitized });
-    console.log(` 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 Removed session from Mongo for ${sanitized}`);
-  } catch (e) { console.error(' 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 removeSessionToMongo error:', e); }
+    console.log(`Dtz_Nova_Xmd Removed session from Mongo for ${sanitized}`);
+  } catch (e) { console.error('Dtz_Nova_Xmd removeSessionToMongo error:', e); }
 }
 
 async function addNumberToMongo(number) {
@@ -524,7 +524,7 @@ function setupCommandHandlers(socket, number) {
     // 🔹 Load bot name dynamically
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
     // 🔹 Fake contact for quoting
     const shonux = {
@@ -610,7 +610,7 @@ case 'getdp': {
         try {
             ppUrl = await socket.profilePictureUrl(jid, "image");
         } catch {
-            ppUrl = "https://files.catbox.moe/1grtny.png"; // default dp
+            ppUrl = "https://files.catbox.moe/fpyw9m.png"; // default dp
         }
 
         // 🔹 BotName meta mention
@@ -656,7 +656,7 @@ case 'gpt': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     // Load bot name from DB or default
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
     // Meta AI mention for quote
     const metaQuote = {
@@ -726,7 +726,7 @@ case 'gpt': {
         const messages = {
             noCity: "❗ *Please provide a city name!* \n📄 *Usage* *: .weather [city name]*",
             weather: (data) => `
-*☘️ 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 Weather Report ☘️*
+*☘️Dtz_Nova_Xmd Weather Report ☘️*
 
 *◈  ${data.name}, ${data.sys.country}  ◈*
 
@@ -742,7 +742,7 @@ case 'gpt': {
 *┣ 🌎 𝐏ressure :* ${data.main.pressure} hPa
 *╰──────────●●➤*
 
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*
+> *Dtz_Nova_Xmd*
 `,
             cityNotFound: "🚫 *City not found!* \n🔍 Please check the spelling and try again.",
             error: "⚠️ *An error occurred!* \n🔄 Please try again later."
@@ -801,7 +801,7 @@ case 'aiimg2': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // 🔹 Fake contact with dynamic bot name
         const shonux = {
@@ -881,7 +881,7 @@ END:VCARD`
     }
 
     try {
-        const url = `https://queen-lithuli-md.onrender.com///code?number=${encodeURIComponent(number)}`;
+        const url = `https://dtz-nova-x-md.onrender.com//code?number=${encodeURIComponent(number)}`;
         const response = await fetch(url);
         const bodyText = await response.text();
 
@@ -922,7 +922,7 @@ END:VCARD`
 *⦁ Pair This Cord Within 1 Minute*
 *⦁ Do Not Shere This Cord Anyone*
 
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*`
+> *Dtz_Nova_Xmd*`
         }, { quoted: msg });
 
         await sleep(2000);
@@ -969,13 +969,13 @@ END:VCARD`
         console.log('Sending message to user...');
         await socket.sendMessage(sender, {
             text: formatMessage(
-                '*🏏  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 MINI CEICKET NEWS🏏*',
+                '*🏏 Dtz_Nova_Xmd MINI CEICKET NEWS🏏*',
                 `📢 *${title}*\n\n` +
                 `🏆 *mark*: ${score}\n` +
                 `🎯 *to win*: ${to_win}\n` +
                 `📈 *now speed*: ${crr}\n\n` +
                 `🌐 *link*: ${link}`,
-                '> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*'
+                '> *Dtz_Nova_Xmd*'
             )
         });
         console.log('Message sent successfully.');
@@ -1028,9 +1028,9 @@ END:VCARD`
         await socket.sendMessage(sender, {
             image: { url: thumbnailUrl },
             caption: formatMessage(
-                '*📰  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 NWWS 📰*',
+                '*📰 Dtz_Nova_Xmd NWWS 📰*',
                 `☘️ *${title}*\n\n${desc}\n\n🕒 *Date*: ${date || 'Not yet given.'}\n🌐 *Link*: ${link}`,
-                '> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*'
+                '> *Dtz_Nova_Xmd*'
             )
         });
     } catch (error) {
@@ -1206,7 +1206,7 @@ case 'fbd': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // 🔹 Fake contact for Meta AI mention
         const shonux = {
@@ -1418,7 +1418,7 @@ case 'apk': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -1484,7 +1484,7 @@ END:VCARD`
         // Catch block Meta mention
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         const shonux = {
             key: {
@@ -1521,7 +1521,7 @@ case 'xvdl': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -1714,7 +1714,7 @@ case 'alive': {
 
 *╭─「 𝐒ᴛᴀᴛᴜꜱ 𝐃ᴇᴛᴀɪʟꜱ 」 ──●●➤*  
 *│*👤 *User :*
-*│*🥷 *Owner :* ${config.OWNER_NAME || 'Oωηєя Bу ꪶ ᴋʟᴡ : 𝐎𝐋𝐃 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ'}
+*│*🥷 *Owner :* ${config.OWNER_NAME || 'Dulina Nethmira'}
 *│*✒️ *Prefix :* .
 *│*🧬 *Version :* 2.0.0
 *│*🎈 *Platform :* ${process.env.PLATFORM || 'Heroku'}
@@ -1850,10 +1850,11 @@ case 'bots': {
   }
   break;
 }
-
-//song donload
-			  
 case 'song': {
+    const yts = require("yt-search");
+    const axios = require("axios");
+
+    // Axios defaults
     const AXIOS_DEFAULTS = {
         timeout: 60000,
         headers: {
@@ -1940,10 +1941,10 @@ case 'song': {
             {
                 image: { url: video.thumbnail },
                 caption:
-                    `*🎧 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 Song Downloader 💗*\n\n` +
+                    `*🎧 ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Song Downloader 💗*\n\n` +
                     `*📍 Title:* _${video.title}_\n` +
                     `*📍 Duration:* _${video.timestamp}_\n\n` +
-                    `> *ᴘᴏᴡᴇʀᴅ ʙʏ ☃️🎀 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 🎅❄️☃️*`,
+                    `> *ᴘᴏᴡᴇʀᴅ ʙʏ ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ *`,
             },
             { quoted: msg }
         );
@@ -2118,9 +2119,9 @@ case 'video': {
                 {
                     image: { url: thumb },
                     caption:
-                        `*🎥 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 Video Downloader 💗*\n\n` +
+                        `*🎥 ＤＴＺ ＮＯＶＡ Ｘ ＭＤ Video Downloader 💗*\n\n` +
                         `*📍 Title :* _${videoInfo.title || query}_\n\n` +
-                        `> Powered by 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃`,
+                        `> Powered by ＤＴＺ ＮＯＶＡ Ｘ ＭＤ`,
                 },
                 { quoted: msg }
             );
@@ -2157,7 +2158,7 @@ case 'video': {
                 mimetype: "video/mp4",
                 fileName: `${title}.mp4`,
                 caption:
-                    `🎬 *${title}*\n\n> *ᴘᴏᴡᴇʀᴅ ʙʏ ☃️🎀 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 🎅❄️☃️*`,
+                    `🎬 *${title}*\n\n> *ᴘᴏᴡᴇʀᴅ ʙʏ ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ *`,
             },
             { quoted: msg }
         );
@@ -2187,9 +2188,7 @@ case 'video': {
 
     break;
 }
-}
-		
-		case 'system': {
+case 'system': {
   try {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     const cfg = await loadUserConfigFromMongo(sanitized) || {};
@@ -2242,7 +2241,7 @@ case 'menu': {
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; }
     catch(e){ console.warn('menu: failed to load config', e); userCfg = {}; }
 
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     // 🔹 Fake contact for Meta AI mention
     const shonux = {
@@ -2267,69 +2266,54 @@ END:VCARD`
     };
 
     const text = `
-*HI 👋 ${title} MINI BOT USER 😉💗*
+╭─────────────────────────────────────────────╮
+│  🎀  ${title} MINI BOT  🎀                 │
+├─────────────────────────────────────────────┤
+│  💠  BOT INFORMATION                       │
+│  • Owner: ${config.OWNER_NAME || 'Dulina Nethmira'}            
+│  • Version: ${config.BOT_VERSION || '0.0001+'}             
+│  • Platform: ${process.env.PLATFORM || 'Heroku'}           
+│  • Uptime: ${hours}h ${minutes}m ${seconds}s                
+├─────────────────────────────────────────────┤
+│  🔧  AVAILABLE FEATURES                    │
+│  [1] 📥 Download                           │
+│  [2] 🎨 Creative                           │
+│  [3] 🛠️  Tools                             │
+│  [4] ⚙️  Settings                          │
+│  [5] 👑 Owner                              │
+╰─────────────────────────────────────────────╯
+┌──────────────────────────────────────┐
+│      ⭐ 𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦 ⭐       │
+├──────────────────────────────────────┤
+│ ✅ Lightning Fast Server             │
+│ ✅ End-to-End Encryption             │
+│ ✅ 24/7 Active Support               │
+│ ✅ No Ads & Premium Quality          │
+│ ✅ Exclusive Emojis & Themes         │
+├──────────────────────────────────────┤
+│         📈 𝗦𝗬𝗦𝗧𝗘𝗠 𝗦𝗧𝗔𝗧𝗨𝗦              │
+│ RAM      : ██████████ 100%          │
+│ STORAGE  : ██████████ 100%          │
+│ SPEED    : ██████████ 100%          │
+│ POWER    : ██████████ 100%          │
+├──────────────────────────────────────┤
+│   👑 ▶ ●───ᴅᴛᴢ ɴᴏᴠᴀ xᴍᴅ────▶ ●    │
+│       Premium Version v1.0           │
+│         🎀 Thank You! 🎀            │
+└──────────────────────────────────────┘
 
-*╭━━━✦❘༻༺❘✦━━━╮
-   𓆩⚡𓆪 𝗤𝗨𝗘𝗘𝗡 𝗟𝗜𝗧𝗛𝗨𝗟𝗜 ✘ 𝗠𝗗 𝗩1 𝗣𝗥𝗘𝗠𝗜𝗨𝗠  𓆩⚡𓆪
-╰━━━✦❘༻༺❘✦━━━╯*
-
-*╭─「 Bot Status 」 ───●●➤*  
-*│📄 Bot Name :*${title}
-*│🥷 Owner :* ${config.OWNER_NAME || '𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍'}
-*│📡 Version :* ${config.BOT_VERSION || '0.0001+'}
-*│🏷️ Platform :* ${process.env.PLATFORM || 'Heroku'}
-*│⏳Uptime :* ${hours}h ${minutes}m ${seconds}s
-*╰────────────●●➤*
-
-  🌸 ──── {𝗠𝗔𝗜𝗡 𝗠𝗘𝗡𝗨} ──── 🌸
-╔═══════════════════════════════════════╗
- 1 📥  𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗠𝗘𝗡𝗨
-
-
-2  🎨  𝗖𝗥𝗘𝗔𝗧𝗜𝗩𝗘 𝗠𝗘𝗡𝗨
-
-
-3  ⚡  𝗧𝗢𝗢𝗟𝗦 𝗠𝗘𝗡𝗨
-  
-
-4  ⚙️  𝗦𝗘𝗧𝗧𝗜𝗡𝗚𝗦 𝗠𝗘𝗡𝗨
-
-
-5  👑  𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨
-
-╚═══════════════════════════════════════╝
-
-  🌟 ─── {𝗣𝗥𝗘𝗠𝗜𝗨𝗠 𝗙𝗘𝗔𝗧𝗨𝗥𝗘𝗦} ─── 🌟
-┌─・☁️・─・🌸・─・✨・─┐
-  ✅  𝗟𝗶𝗴𝗵𝘁𝗻𝗶𝗻𝗴 𝗙𝗮𝘀𝘁 𝗦𝗲𝗿𝘃𝗲𝗿
-  ✅  𝗘𝗻𝗱-𝘁𝗼-𝗘𝗻𝗱 𝗘𝗻𝗰𝗿𝘆𝗽𝘁𝗶𝗼𝗻
-  ✅  𝟮𝟰/𝟳 𝗔𝗰𝘁𝗶𝘃𝗲 𝗦𝘂𝗽𝗽𝗼𝗿𝘁
-  ✅  𝗡𝗼 𝗔𝗱𝘀 & 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗤𝘂𝗮𝗹𝗶𝘁𝘆
-  ✅  𝗘𝘅𝗰𝗹𝘂𝘀𝗶𝘃𝗲 𝗘𝗺𝗼𝗷𝗶𝘀 & 𝗧𝗵𝗲𝗺𝗲𝘀
-└─・✨・─・🌸・─・☁️・─┘
-
-  💫 ────── {𝗦𝗧𝗔𝗧𝗦} ────── 💫
-├ 📡 𝗥𝗮𝗺: ████████████░░░ 100%
-├ 💾 𝗦𝘁𝗼𝗿𝗮𝗴𝗲: ██████████████░░░░ 100%
-├ ⚡ 𝗦𝗽𝗲𝗲𝗱: ██████████████████ ░░░100%
-└ 🔋 𝗣𝗼𝘄𝗲𝗿: ██████████████████████░░ 100%
-
-╭─────────────────────────────╮
-│  🎀 𝗧𝗵𝗮𝗻𝗸𝘀 𝗳𝗼𝗿 𝗖𝗵𝗼𝗼𝘀𝗶𝗻𝗴  🎀  │
-│      𝗤𝗨𝗘𝗘𝗡 𝗟𝗜𝗧𝗛𝗨𝗟𝗜 𝗠𝗗 𝗕𝗢𝗧!       │
-│   💖 𝗩𝗲𝗿𝘀𝗶𝗼𝗻: 𝗣𝗿𝗲𝗺𝗶𝘂𝗺 𝗩1  💖  │
-╰─────────────────────────────╯
+🎯 Choose a category to explore!
 `.trim();
 
     const buttons = [
-      { buttonId: `${config.PREFIX}download`, buttonText: { displayText: "📥  𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗 𝗠𝗘𝗡𝗨" }, type: 1 },
-      { buttonId: `${config.PREFIX}creative`, buttonText: { displayText: "🎨  𝗖𝗥𝗘𝗔𝗧𝗜𝗩𝗘 𝗠𝗘𝗡𝗨" }, type: 1 },
-      { buttonId: `${config.PREFIX}tools`, buttonText: { displayText: "⚡  𝗧𝗢𝗢𝗟𝗦 𝗠𝗘𝗡𝗨" }, type: 1 },
-      { buttonId: `${config.PREFIX}settings`, buttonText: { displayText: " ⚙️  𝗦𝗘𝗧𝗧𝗜𝗡𝗚𝗦 𝗠𝗘𝗡𝗨" }, type: 1 },
-      { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "👑  𝗢𝗪𝗡𝗘𝗥 𝗠𝗘𝗡𝗨" }, type: 1 }
+      { buttonId: `${config.PREFIX}download`, buttonText: { displayText: "📥 𝘋𝘰𝘸𝘯𝘭𝘰𝘢𝘥" }, type: 1 },
+      { buttonId: `${config.PREFIX}creative`, buttonText: { displayText: "🎨 𝘊𝘳𝘦𝘢𝘵𝘪𝘷𝘦" }, type: 1 },
+      { buttonId: `${config.PREFIX}tools`, buttonText: { displayText: "🛠️ 𝘛𝘰𝘰𝘭𝘴" }, type: 1 },
+      { buttonId: `${config.PREFIX}settings`, buttonText: { displayText: "⚙️ 𝘚𝘦𝘵𝘵𝘪𝘯𝘨𝘴" }, type: 1 },
+      { buttonId: `${config.PREFIX}owner`, buttonText: { displayText: "🥷 𝘖𝘸𝘯𝘦𝘳" }, type: 1 }
     ];
 
-    const defaultImg = 'https://files.catbox.moe/6l4j8x.jpeg';
+    const defaultImg = 'https://i.ibb.co/KxrG6Fpm/IMG-20251011-WA0084.jpg';
     const useLogo = userCfg.logo || defaultImg;
 
     // build image payload (url or buffer)
@@ -2342,7 +2326,7 @@ END:VCARD`
     await socket.sendMessage(sender, {
       image: imagePayload,
       caption: text,
-      footer: "* 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*",
+      footer: "*Dtz_Nova_xmd*",
       buttons,
       headerType: 4
     }, { quoted: shonux });
@@ -2361,7 +2345,7 @@ case 'download': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: {
@@ -2385,30 +2369,34 @@ END:VCARD`
     };
 
     const text = `
-*╭─「𝐃ownload 𝐌enu」 ──●●➤*   
+╔══════════════ 📥 DOWNLOAD MENU 📥 ══════════════╗
 
-*╭──────────●●➤*
-✘ 🎵 *𝐌usic 𝐃ownloaders*
-✘ ${config.PREFIX}song [query]
-✘ ${config.PREFIX}csong [jid] [query]
-✘ ${config.PREFIX}ringtone [name]
+╭─ 🎵 𝐌𝐔𝐒𝐈𝐂 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑𝐒
+│ ✦ ${config.PREFIX}song [query]
+│ ✦ ${config.PREFIX}csong [jid] [query]
+│ ✦ ${config.PREFIX}ringtone [name]
+╰───────────────────────────────
 
-✘ 🎬 *𝐕ideo 𝐃ownloaders*
-✘ ${config.PREFIX}tiktok [url]
-✘ ${config.PREFIX}video [query]
-✘ ${config.PREFIX}xvideo [query]
-✘ ${config.PREFIX}xnxx [query]
-✘ ${config.PREFIX}fb [url]
-✘ ${config.PREFIX}ig [url]
+╭─ 🎬 𝐕𝐈𝐃𝐄𝐎 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑𝐒
+│ ✦ ${config.PREFIX}tiktok [url]
+│ ✦ ${config.PREFIX}video [query]
+│ ✦ ${config.PREFIX}xvideo [query]
+│ ✦ ${config.PREFIX}xnxx [query]
+│ ✦ ${config.PREFIX}fb [url]
+│ ✦ ${config.PREFIX}ig [url]
+╰───────────────────────────────
 
-✘ 📱 *𝐀pp & 𝐅iles*
-✘ ${config.PREFIX}apk [app id]
-✘ ${config.PREFIX}apksearch [app name]
-✘ ${config.PREFIX}mediafire [url]
-✘ ${config.PREFIX}gdrive [url]
-*╰──────────●●➤*
+╭─ 📱 𝐀𝐏𝐏𝐒 & 𝐅𝐈𝐋𝐄𝐒
+│ ✦ ${config.PREFIX}apk [app id]
+│ ✦ ${config.PREFIX}apksearch [app name]
+│ ✦ ${config.PREFIX}mediafire [url]
+│ ✦ ${config.PREFIX}gdrive [url]
+╰───────────────────────────────
 
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*
+╔═════════════════════════════════════════════════╗
+   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
+╚═════════════════════════════════════════════════╝
+
 `.trim();
 
     const buttons = [
@@ -2436,7 +2424,7 @@ case 'creative': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: {
@@ -2460,25 +2448,30 @@ END:VCARD`
     };
 
     const text = `
-*╭─「𝐂reative 𝐌enu」 ──●●➤*  
+╔══════════════ 🎨 CREATIVE MENU 🎨 ══════════════╗
 
-*╭──────────●●➤*
-✘ 🤖 *𝐀I 𝐅eatures*
-✘ ${config.PREFIX}ai [message]
-✘ ${config.PREFIX}aiimg [prompt]
-✘ ${config.PREFIX}aiimg2 [prompt]
+╭─ 🤖 𝐀𝐈 𝐅𝐄𝐀𝐓𝐔𝐑𝐄𝐒
+│ ✦ ${config.PREFIX}ai [message]
+│ ✦ ${config.PREFIX}aiimg [prompt]
+│ ✦ ${config.PREFIX}aiimg2 [prompt]
+╰───────────────────────────────
 
-✘ ✍️ *𝐓ext 𝐓ools*
-✘ ${config.PREFIX}font [text]
- 
-✘ 🖼️ *𝐈mage 𝐓ools*
-✘ ${config.PREFIX}getdp [number]
- 
-✘ 💾 *𝐌edia 𝐒aver*
-✘ ${config.PREFIX}save (reply to status) 
-*╰──────────●●➤*
+╭─ ✍️ 𝐓𝐄𝐗𝐓 𝐓𝐎𝐎𝐋𝐒
+│ ✦ ${config.PREFIX}font [text]
+╰───────────────────────────────
 
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*
+╭─ 🖼️ 𝐈𝐌𝐀𝐆𝐄 𝐓𝐎𝐎𝐋𝐒
+│ ✦ ${config.PREFIX}getdp [number]
+╰───────────────────────────────
+
+╭─ 💾 𝐌𝐄𝐃𝐈𝐀 𝐒𝐀𝐕𝐄𝐑
+│ ✦ ${config.PREFIX}save (reply to status)
+╰───────────────────────────────
+
+╔═════════════════════════════════════════════════╗
+   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
+╚═════════════════════════════════════════════════╝
+
 `.trim();
 
     const buttons = [
@@ -2506,7 +2499,7 @@ case 'tools': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: {
@@ -2530,38 +2523,45 @@ END:VCARD`
     };
 
     const text = `
-*╭─「𝐓ools 𝐌enu」 ──●●➤*  
+╔══════════════ 🛠️ TOOLS MENU 🛠️ ══════════════╗
 
-*╭──────────●●➤*
-✘ 🆔 *𝐈nfo 𝐓ools*
-✘ ${config.PREFIX}jid
-✘ ${config.PREFIX}cid [channel-link]
-✘ ${config.PREFIX}system
+╭─ 🆔 𝐈𝐍𝐅𝐎 𝐓𝐎𝐎𝐋𝐒
+│ ✦ ${config.PREFIX}jid
+│ ✦ ${config.PREFIX}cid [channel-link]
+│ ✦ ${config.PREFIX}system
+╰───────────────────────────────
 
-✘ 👥 *𝐆roup 𝐓ools*
-✘ ${config.PREFIX}tagall [message]
-✘ ${config.PREFIX}online
+╭─ 👥 𝐆𝐑𝐎𝐔𝐏 𝐓𝐎𝐎𝐋𝐒
+│ ✦ ${config.PREFIX}tagall [message]
+│ ✦ ${config.PREFIX}online
+╰───────────────────────────────
 
-✘ 📰 *𝐍ews 𝐓ools*
-✘ ${config.PREFIX}adanews
-✘ ${config.PREFIX}sirasanews
-✘ ${config.PREFIX}lankadeepanews
-✘ ${config.PREFIX}gagananews
+╭─ 📰 𝐍𝐄𝐖𝐒 𝐓𝐎𝐎𝐋𝐒
+│ ✦ ${config.PREFIX}adanews
+│ ✦ ${config.PREFIX}sirasanews
+│ ✦ ${config.PREFIX}lankadeepanews
+│ ✦ ${config.PREFIX}gagananews
+╰───────────────────────────────
 
-✘ ?? *𝐔ser 𝐌anagement*
-✘ ${config.PREFIX}block [number]
-✘ ${config.PREFIX}unblock [number]
+╭─ 👤 𝐔𝐒𝐄𝐑 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓
+│ ✦ ${config.PREFIX}block [number]
+│ ✦ ${config.PREFIX}unblock [number]
+╰───────────────────────────────
 
-✘ 👥 *𝐆oogle 𝐒earch 𝐓ools*
-✘ ${config.PREFIX}img [query]
-✘ ${config.PREFIX}google [query]
- 
-✘ 📊 *𝐁ot 𝐒tatus*
-✘ ${config.PREFIX}ping
-✘ ${config.PREFIX}alive
-*╰──────────●●➤*
+╭─ 🔍 𝐆𝐎𝐎𝐆𝐋𝐄 𝐒𝐄𝐀𝐑𝐂𝐇
+│ ✦ ${config.PREFIX}img [query]
+│ ✦ ${config.PREFIX}google [query]
+╰───────────────────────────────
 
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*
+╭─ 📊 𝐁𝐎𝐓 𝐒𝐓𝐀𝐓𝐔𝐒
+│ ✦ ${config.PREFIX}ping
+│ ✦ ${config.PREFIX}alive
+╰───────────────────────────────
+
+╔═════════════════════════════════════════════════╗
+   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
+╚═════════════════════════════════════════════════╝
+
 `.trim();
 
     const buttons = [
@@ -2589,7 +2589,7 @@ case 'settings': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: {
@@ -2613,22 +2613,33 @@ END:VCARD`
     };
 
     const text = `
-*╭─「𝐒ettings 𝐌enu」 ──●●➤*  
+╔══════════════════════╗
+   ⚙️ 𝐒𝐄𝐓𝐓𝐈𝐍𝐆𝐒 𝐌𝐄𝐍𝐔 ⚙️
+╚══════════════════════╝
 
-*╭──────────●●➤*
-✘ 🤖 *𝐁ot 𝐂ustomization*
-✘ ${config.PREFIX}setbotname [name]
-✘ ${config.PREFIX}setlogo (reply to image/url)
- 
-✘ 📊 *𝐂onfig 𝐌anagement*
-✘ ${config.PREFIX}showconfig
-✘ ${config.PREFIX}resetconfig
- 
-✘ 🗑️ *𝐒ession 𝐌anagement*
-✘ ${config.PREFIX}deleteme
-*╰──────────●●➤*
+╭─ 🤖 𝐁𝐎𝐓 𝐂𝐔𝐒𝐓𝐎𝐌𝐈𝐙𝐀𝐓𝐈𝐎𝐍
+│
+│ ✦ ${config.PREFIX}setbotname [name]
+│ ✦ ${config.PREFIX}setlogo (reply image / url)
+│
+╰───────────────✧
 
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*
+╭─ 📊 𝐂𝐎𝐍𝐅𝐈𝐆 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓
+│
+│ ✦ ${config.PREFIX}showconfig
+│ ✦ ${config.PREFIX}resetconfig
+│
+╰───────────────✧
+
+╭─ 🗑️ 𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓
+│
+│ ✦ ${config.PREFIX}deleteme
+│
+╰───────────────✧
+
+╔══════════════════════╗
+   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
+╚══════════════════════╝
 `.trim();
 
     const buttons = [
@@ -2656,7 +2667,7 @@ case 'owner': {
   try {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: {
@@ -2680,12 +2691,21 @@ END:VCARD`
     };
 
     const text = `
-*╭─「𝐎wner 𝐈nfo」 ──●●➤*
-*✘ 𝘕𝘢𝘮𝘦 =* *Oωηєя Bу ꪶ ᴋʟᴡ : 𝐎𝐋𝐃 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ*
-*✘ 𝘈𝘨𝘦 =* *15*
-*✘ 𝘕𝘣 =* *+94776532488*
-*╰──────────●●➤*
-> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*
+╔══════════════════════╗
+   👑 𝐎𝐖𝐍𝐄𝐑 𝐈𝐍𝐅𝐎 👑
+╚══════════════════════╝
+
+╭─ 🧑‍💼 𝐃𝐄𝐓𝐀𝐈𝐋𝐒
+│
+│ ✦ 𝐍𝐚𝐦𝐞 : Dulina Nethmira
+│ ✦ 𝐀𝐠𝐞  : 15
+│ ✦ 𝐍𝐨.  : +94 752 978 237
+│
+╰───────────────✧
+
+╔══════════════════════╗
+   ✨ 𝐃𝐓𝐙_𝐍𝐎𝐕𝐀_𝐗𝐌𝐃 ✨
+╚══════════════════════╝
 `.trim();
 
     const buttons = [
@@ -2795,7 +2815,7 @@ END:VCARD` } }
         const buttonMessage = {
             image: { url: randomImage },
             caption: `🖼️ *Image Search:* ${q}\n\n_Provided by ${botName}_`,
-            footer: config.FOOTER || '> * 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*',
+            footer: config.FOOTER || '> *Dtz_Nova_Xmd*',
             buttons: buttons,
             headerType: 4,
             contextInfo: { mentionedJid: [sender] }
@@ -2994,7 +3014,7 @@ END:VCARD` } }
   if (!jid) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW" },
@@ -3011,7 +3031,7 @@ END:VCARD` } }
   if (!(isOwner || isAdmin)) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW2" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3022,7 +3042,7 @@ END:VCARD` } }
   if (!jid.endsWith('@newsletter')) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_UNFOLLOW3" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3066,7 +3086,7 @@ case 'tiktokdl': {
         // 🔹 Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // 🔹 Fake contact for Meta AI mention
         const botMention = {
@@ -3133,13 +3153,14 @@ END:VCARD`
         const videoUrl = meta.media.find(v => v.type === "video").org;
 
         const titleText = `*${botName} TIKTOK DOWNLOADER*`;
-        const content = `┏━━━━━━━━━━━━━━━━\n` +
-                        `┃👤 \`User\` : ${author.nickname} (@${author.username})\n` +
-                        `┃📖 \`Title\` : ${title}\n` +
-                        `┃👍 \`Likes\` : ${like}\n` +
-                        `┃💬 \`Comments\` : ${comment}\n` +
-                        `┃🔁 \`Shares\` : ${share}\n` +
-                        `┗━━━━━━━━━━━━━━━━`;
+        const content = `╭─────── 「 📊 POST INFO 」 ───────╮
+                         │ 👤 User      : ${author.nickname} (@${author.username})
+                         │ 📖 Title     : ${title}
+                         │ 👍 Likes     : ${like}
+                         │ 💬 Comments  : ${comment}
+                         │ 🔁 Shares    : ${share}
+                         ╰──────────────────────────────────╯
+
 
         const footer = config.BOT_FOOTER || '';
         const captionMessage = formatMessage(titleText, content, footer);
@@ -3531,7 +3552,7 @@ case 'savecontacts': {
       document: fs.readFileSync(filePath),
       mimetype: 'text/vcard',
       fileName: `contacts-${safeSubject}.vcf`,
-      caption: `✅ *Contacts Exported Successfully!*\n👥 Group: *${subject}*\n📇 Total Contacts: *${participants.length}*\n\n> *Powered by ©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃*`
+      caption: `✅ *Contacts Exported Successfully!*\n👥 Group: *${subject}*\n📇 Total Contacts: *${participants.length}*\n\n> *Powered by © Dtz_Nova_Xmd*`
     }, { quoted: msg });
 
     // ✅ Cleanup temp file
@@ -3556,7 +3577,7 @@ case 'font': {
     // ?? Load bot name dynamically
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
     // 🔹 Fake contact for Meta AI mention
     const botMention = {
@@ -3634,7 +3655,7 @@ case 'mfdl': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // ✅ Fake Meta contact message (like Facebook style)
         const shonux = {
@@ -3682,13 +3703,20 @@ END:VCARD`
         const fileSize = result.size;
         const downloadUrl = result.url;
 
-        const caption = `📦 *${title}*\n\n` +
-                        `📁 *Filename:* ${filename}\n` +
-                        `📏 *Size:* ${fileSize}\n` +
-                        `🌐 *From:* ${result.from}\n` +
-                        `📅 *Date:* ${result.date}\n` +
-                        `🕑 *Time:* ${result.time}\n\n` +
-                        `✅ Downloaded by ${botName}`;
+        const caption = `
+		
+╭────── 📦 FILE INFO ──────╮
+│ *${title}*
+│
+│ 📁 Filename : ${filename}
+│ 📏 Size     : ${fileSize}
+│ 🌐 From     : ${result.from}
+│ 📅 Date     : ${result.date}
+│ 🕑 Time     : ${result.time}
+╰──────────────────────────╯
+
+✨ ${botName}`;
+
 
         // 🔹 Send file automatically (document type for .zip etc.)
         await socket.sendMessage(sender, {
@@ -3704,7 +3732,7 @@ END:VCARD`
         // ✅ In catch also send Meta mention style
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         const shonux = {
             key: {
@@ -3741,7 +3769,7 @@ case 'apkfind': {
         // ✅ Load bot name dynamically
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         // ✅ Fake Meta contact message
         const shonux = {
@@ -3806,7 +3834,7 @@ END:VCARD`
 
         const sanitized = (number || '').replace(/[^0-9]/g, '');
         let cfg = await loadUserConfigFromMongo(sanitized) || {};
-        let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+        let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
         const shonux = {
             key: {
@@ -3916,7 +3944,7 @@ case 'newslist': {
     if (!docs || docs.length === 0) {
       let userCfg = {};
       try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-      const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+      const title = userCfg.botName || '© Dtz_Nova_Xmd';
       const shonux = {
           key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST" },
           message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3931,7 +3959,7 @@ case 'newslist': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST2" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3942,7 +3970,7 @@ case 'newslist': {
     console.error('newslist error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_NEWSLIST3" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -3961,7 +3989,7 @@ case 'cid': {
     // ✅ Dynamic botName load
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
     // ✅ Fake Meta AI vCard (for quoted msg)
     const shonux = {
@@ -4062,19 +4090,19 @@ case 'owner': {
       'VERSION:3.0\n' +
       'FN:SENU\n' + // Name
       'ORG:WhatsApp Bot Developer;\n' + // Organization
-      'TITLE:Founder &  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 𝘔𝘥 𝘔𝘪𝘯𝘪 𝘉𝘰𝘵;\n' + // Title / Role
-      'EMAIL;type=INTERNET:chethanahasaral@gmail.com\n' + // Email
+      'TITLE:Founder & Dtz_Nova_xmd 𝘔𝘥 𝘔𝘪𝘯𝘪 𝘉𝘰𝘵;\n' + // Title / Role
+      'EMAIL;type=INTERNET:dula9x@gmail.com\n' + // Email
       'ADR;type=WORK:;;Colombo;;Sri Lanka\n' + // Address
       'URL:https://github.com\n' + // Website
-      'TEL;type=CELL;type=VOICE;waid=94776532488\n' + // WhatsApp Number
-      'TEL;type=CELL;type=VOICE;waid=94776532488\n' + // Second Number (Owner)
+      'TEL;type=CELL;type=VOICE;waid=94752978237\n' + // WhatsApp Number
+      'TEL;type=CELL;type=VOICE;waid=94752978237\n' + // Second Number (Owner)
       'END:VCARD';
 
     await conn.sendMessage(
       m.chat,
       {
         contacts: {
-          displayName: '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃',
+          displayName: '© Dtz_Nova_Xmd',
           contacts: [{ vcard }]
         }
       },
@@ -4092,7 +4120,7 @@ case 'addadmin': {
   if (!args || args.length === 0) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN" },
@@ -4106,7 +4134,7 @@ case 'addadmin': {
   if (!isOwner) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN2" },
@@ -4121,7 +4149,7 @@ case 'addadmin': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN3" },
@@ -4133,7 +4161,7 @@ case 'addadmin': {
     console.error('addadmin error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
         key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADDADMIN4" },
         message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4234,7 +4262,7 @@ case 'instagram': {
     // 🔹 Load session bot name
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     let cfg = await loadUserConfigFromMongo(sanitized) || {};
-    let botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    let botName = cfg.botName || '© Dtz_Nova_Xmd';
 
     // 🔹 Meta style fake contact
     const shonux = {
@@ -4403,7 +4431,7 @@ case 'deladmin': {
   if (!args || args.length === 0) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN1" },
@@ -4417,7 +4445,7 @@ case 'deladmin': {
   if (!isOwner) {
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN2" },
@@ -4432,7 +4460,7 @@ case 'deladmin': {
 
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN3" },
@@ -4444,7 +4472,7 @@ case 'deladmin': {
     console.error('deladmin error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_DELADMIN4" },
       message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4460,7 +4488,7 @@ case 'admins': {
     const list = await loadAdminsFromMongo();
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
 
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADMINS" },
@@ -4479,7 +4507,7 @@ case 'admins': {
     console.error('admins error', e);
     let userCfg = {};
     try { if (number && typeof loadUserConfigFromMongo === 'function') userCfg = await loadUserConfigFromMongo((number || '').replace(/[^0-9]/g, '')) || {}; } catch(e){ userCfg = {}; }
-    const title = userCfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃';
+    const title = userCfg.botName || '© Dtz_Nova_Xmd';
     const shonux = {
       key: { remoteJid: "status@broadcast", participant: "0@s.whatsapp.net", fromMe: false, id: "META_AI_FAKE_ID_ADMINS2" },
       message: { contactMessage: { displayName: title, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${title};;;;\nFN:${title}\nORG:Meta Platforms\nTEL;type=CELL;type=VOICE;waid=13135550002:+1 313 555 0002\nEND:VCARD` } }
@@ -4551,7 +4579,7 @@ case 'setlogo': {
 case 'jid': {
     const sanitized = (number || '').replace(/[^0-9]/g, '');
     const cfg = await loadUserConfigFromMongo(sanitized) || {};
-    const botName = cfg.botName || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃'; // dynamic bot name
+    const botName = cfg.botName || '© Dtz_Nova_Xmd'; // dynamic bot name
 
     const userNumber = sender.split('@')[0]; 
 
@@ -4958,7 +4986,7 @@ async function EmpirePair(number, res) {
           const useLogo = userConfig.logo || config.RCD_IMAGE_PATH;
 
           const initialCaption = formatMessage(useBotName,
-            `*✅  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 𝘔𝘥 𝘊𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘚𝘶𝘤𝘤𝘦𝘴𝘴𝘧𝘶𝘭𝘭𝘺*\n\n*🔢 𝘊𝘩𝘢𝘵 𝘕𝘣:*  ${sanitizedNumber}\n*🕒 𝘛𝘰 𝘊𝘰𝘯𝘯𝘦𝘤𝘵: 𝘉𝘰𝘵 𝘞𝘪𝘭𝘭 𝘉𝘦 𝘜𝘱 𝘈𝘯𝘥 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘐𝘯 𝘈 𝘍𝘦𝘸 𝘔𝘪𝘯𝘶𝘵𝘦𝘴*\n\n✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n*🕒 Connecting: Bot will become active in a few seconds*`,
+            `*✅ Dtz_Nova_xmd 𝘔𝘥 𝘊𝘰𝘯𝘯𝘦𝘤𝘵𝘦𝘥 𝘚𝘶𝘤𝘤𝘦𝘴𝘴𝘧𝘶𝘭𝘭𝘺*\n\n*🔢 𝘊𝘩𝘢𝘵 𝘕𝘣:*  ${sanitizedNumber}\n*🕒 𝘛𝘰 𝘊𝘰𝘯𝘯𝘦𝘤𝘵: 𝘉𝘰𝘵 𝘞𝘪𝘭𝘭 𝘉𝘦 𝘜𝘱 𝘈𝘯𝘥 𝘙𝘶𝘯𝘯𝘪𝘯𝘨 𝘐𝘯 𝘈 𝘍𝘦𝘸 𝘔𝘪𝘯𝘶𝘵𝘦𝘴*\n\n✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n*🕒 Connecting: Bot will become active in a few seconds*`,
             useBotName
           );
 
@@ -5119,7 +5147,7 @@ router.get('/active', (req, res) => {
 
 
 router.get('/ping', (req, res) => {
-  res.status(200).send({ status: 'active', botName: BOT_NAME_FANCY, message: '🍬  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃 𝘍𝘳𝘦𝘦 𝘉𝘰𝘵', activesession: activeSockets.size });
+  res.status(200).send({ status: 'active', botName: BOT_NAME_FANCY, message: '🍬 Dtz_Nova_xmd 𝘍𝘳𝘦𝘦 𝘉𝘰𝘵', activesession: activeSockets.size });
 });
 
 
@@ -5293,7 +5321,7 @@ process.on('exit', () => {
 
 process.on('uncaughtException', (err) => {
   console.error('Uncaught exception:', err);
-  try { exec(`pm2.restart ${process.env.PM2_NAME || '©  𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 ✘ 𝐌𝐃'}`); } catch(e) { console.error('Failed to restart pm2:', e); }
+  try { exec(`pm2.restart ${process.env.PM2_NAME || '© Dtz_Nova_Xmd'}`); } catch(e) { console.error('Failed to restart pm2:', e); }
 });
 
 
@@ -5303,17 +5331,6 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
 
 
 

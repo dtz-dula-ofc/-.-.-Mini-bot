@@ -2108,7 +2108,7 @@ END:VCARD`
 
 *╭─「 Bot Status 」 ───●●➤*  
 *│📄 Bot Name :*${title}
-*│🥷 Owner :* ${config.OWNER_NAME || 'Dulina Nethmira'}
+*│🥷 Owner :* ${config.OWNER_NAME || '𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍'}
 *│📡 Version :* ${config.BOT_VERSION || '0.0001+'}
 *│🏷️ Platform :* ${process.env.PLATFORM || 'Heroku'}
 *│⏳Uptime :* ${hours}h ${minutes}m ${seconds}s
@@ -5105,6 +5105,7 @@ initMongo().catch(err => console.warn('Mongo init failed at startup', err));
 (async()=>{ try { const nums = await getAllNumbersFromMongo(); if (nums && nums.length) { for (const n of nums) { if (!activeSockets.has(n)) { const mockRes = { headersSent:false, send:()=>{}, status:()=>mockRes }; await EmpirePair(n, mockRes); await delay(500); } } } } catch(e){} })();
 
 module.exports = router;
+
 
 
 

@@ -1,7 +1,7 @@
 {
-  "name": "Dtz_Nova_Xmd 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃",
+  "name": "𝙼𝙸𝙽𝙸 𝙱𝙾𝚃",
   "version": "1.0.0",
-  "description": "Dtz_Nova_Xmd 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃 WhatsApp Bot with Multi-Number Support",
+  "description": "𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃 WhatsApp Bot with Multi-Number Support",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -43,6 +43,6 @@
     "baileys",
     "sula-md"
   ],
-  "author": "dula",
+  "author": "dtz",
   "license": "MIT"
 }

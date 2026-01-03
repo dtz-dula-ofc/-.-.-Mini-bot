@@ -8,7 +8,7 @@
 <h3 align="center">💻 Passionate IT Student | Exploring the Boundless World of Technology 🌍</h3>
 
 <p align="center">
-  <a href="https://wa.me/94752978237" target="_blank">
+  <a href="https://wa.me/94776532488" target="_blank">
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/whatsapp.svg" alt="WhatsApp" height="30" width="30">
     <strong>𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 WA BOT</strong>
   </a>

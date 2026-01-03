@@ -1,16 +1,16 @@
-<!-- 🌟 DTZ NOVA X MD WA BOT | Modern Profile README 🌟 -->
+<!-- 🌟𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 WA BOT | Modern Profile README 🌟 -->
 
 <p align="center">
   <img src="https://files.catbox.moe/fpyw9m.png" alt="DTZ NOVA X MD WA BOT Banner" width="100%">
 </p>
 
-<h1 align="center">Hi 👋, I'm Dulina Nethmira</h1>
+<h1 align="center">Hi 👋, I'm ꪶ ᴋʟᴡ : 𝐎𝐋𝐃 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ</h1>
 <h3 align="center">💻 Passionate IT Student | Exploring the Boundless World of Technology 🌍</h3>
 
 <p align="center">
   <a href="https://wa.me/94752978237" target="_blank">
     <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/whatsapp.svg" alt="WhatsApp" height="30" width="30">
-    <strong> DTZ NOVA X MD WA BOT</strong>
+    <strong>𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 WA BOT</strong>
   </a>
 </p>
 
@@ -27,8 +27,8 @@
 - 🌱 I'm currently learning **MERN Stack**
 - 🧑‍🎓 I'm an Undergraduate at **SLIIT**
 - 💬 Ask me about **Java**
-- 📫 Reach me at **dula9x@gmail.com**
-- ⚡ Fun fact: Call me **Dulina NETHMIRA**
+- 📫 Reach me at **chethanahasaral@gmail.com**
+- ⚡ Fun fact: Call me **𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍**
 
 </td>
 <td width="50%" align="center">
@@ -51,13 +51,6 @@
 
 ---
 
-<h2 align="left">🌐 Connect with me</h2>
-
-<p align="left">
-<a href="https://www.youtube.com/channel/UCQHv5_eoQWCEgaK91e0l3Jw" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="youtube" height="30" width="40" /></a>
-</p>
-
----
 
 <h2 align="left">🛠️ Languages and Tools</h2>
 

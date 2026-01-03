@@ -28,76 +28,87 @@ body {
 }
 
 .box {
-  width: 320px;
+  width: 350px;
   padding: 20px;
-  background: rgba(20, 0, 0, 0.85); /* Semi-transparent to show background */
-  border-radius: 12px;
+  background: rgba(20, 0, 0, 0.85);
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 0 20px #ff0033, 0 0 30px #ff0033;
-  border: 1px solid #ff0033;
-  backdrop-filter: blur(5px); /* Adds glass effect */
+  box-shadow: 0 0 25px #ff0033, 0 0 35px #ff0033;
+  border: 2px solid #ff0033;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
 }
 
 /* ================= TEXT ================= */
-h3, h6 {
+h3 {
   color: #ff0033;
-  margin: 8px 0;
-  text-shadow: 0 0 5px #ff0033, 0 0 10px #000;
+  margin: 0 0 5px 0; /* Reduced bottom margin */
+  text-shadow: 0 0 8px #ff0033, 0 0 15px #000;
+  font-size: 1.3em;
+  line-height: 1.3;
+  padding: 5px 0;
+}
+
+h6 {
+  color: #ff6666;
+  margin: 2px 0; /* Reduced margins */
+  text-shadow: 0 0 3px #ff0033, 0 0 8px #000;
+  font-size: 0.85em;
 }
 
 /* ================= INPUT ================= */
 .input-container {
   display: flex;
-  margin-top: 15px;
+  margin: 10px 0 5px 0; /* Reduced top and bottom margins */
+  height: 45px;
 }
 
 .input-container input {
   width: 70%;
-  height: 3rem;
+  height: 100%;
   border: none;
   outline: none;
   border-radius: 0.8rem 0 0 0.8rem;
   padding-left: 1rem;
-  font-size: 1rem;
-  background: rgba(40, 0, 0, 0.8);
+  font-size: 1.1rem;
+  background: rgba(40, 0, 0, 0.9);
   color: white;
-  border: 1px solid #ff0033;
+  border: 2px solid #ff0033;
+  box-sizing: border-box;
 }
 
 .input-container input::placeholder {
-  color: #ff6666;
+  color: #ff9999;
+  font-size: 0.95rem;
 }
 
 .input-container button {
   width: 30%;
-  height: 3rem;
+  height: 100%;
   border: none;
   cursor: pointer;
   background: #ff0033;
   color: white;
   font-weight: bold;
+  font-size: 1rem;
   border-radius: 0 0.8rem 0.8rem 0;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .input-container button:hover {
   background: #ff3366;
-  box-shadow: 0 0 10px #ff0033;
-}
-
-.centered-text {
-  color: #ffcccc;
-  font-weight: bold;
-  margin-top: 15px;
-  text-shadow: 0 0 3px #000;
+  box-shadow: 0 0 15px #ff0033;
 }
 
 /* ================= TIME ================= */
 #time {
   color: #ff3366;
   font-weight: bold;
-  margin-bottom: 10px;
-  text-shadow: 0 0 3px #ff0033, 0 0 5px #000;
+  margin: 0 0 5px 0; /* Reduced bottom margin */
+  text-shadow: 0 0 3px #ff0033, 0 0 8px #000;
+  font-size: 0.85em;
 }
 
 /* ================= SNOW ================= */
@@ -118,7 +129,7 @@ h3, h6 {
   height: 6px;
   background: #ff6666;
   border-radius: 50%;
-  opacity: 0.6;
+  opacity: 0.4;
   animation: snow linear infinite;
 }
 
@@ -135,7 +146,7 @@ h3, h6 {
   height: 4px;
   background: #ff0033;
   border-radius: 50%;
-  opacity: 0.6;
+  opacity: 0.5;
   animation: float 6s infinite ease-in-out;
   box-shadow: 0 0 5px #ff0033;
 }
@@ -150,28 +161,37 @@ h3, h6 {
 .fa-user {
   color: #ff0033 !important;
   text-shadow: 0 0 5px #ff0033, 0 0 10px #000;
+  font-size: 1.3em;
+  margin: 0 0 3px 0; /* Reduced margin */
 }
 
 /* ================= COPY BUTTON ================= */
 #copy {
   cursor: pointer;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: all 0.3s ease;
-  background: rgba(40, 0, 0, 0.8);
-  border: 1px solid #ff0033;
+  background: rgba(40, 0, 0, 0.9);
+  border: 2px solid #ff0033;
   backdrop-filter: blur(3px);
+  margin-top: 8px;
 }
 
 #copy:hover {
-  background: rgba(60, 0, 0, 0.9);
-  box-shadow: 0 0 10px #ff0033;
+  background: rgba(60, 0, 0, 0.95);
+  box-shadow: 0 0 15px #ff0033;
+  transform: scale(1.02);
 }
 
 /* ================= MESSAGES ================= */
+#pair {
+  margin-top: 8px;
+}
+
 #pair span {
   color: #ffcccc;
   text-shadow: 0 0 3px #000;
+  font-size: 0.95em;
 }
 
 #pair span[style*="color:red"] {
@@ -182,6 +202,12 @@ h3, h6 {
 #pair span[style*="color:white"] {
   color: #ffcccc !important;
   text-shadow: 0 0 3px #000;
+}
+
+/* ================= COMPACT LAYOUT ================= */
+.compact-spacing {
+  margin: 2px 0;
+  padding: 1px 0;
 }
 </style>
 </head>
@@ -198,10 +224,10 @@ h3, h6 {
   <div class="box">
     <div id="time"></div>
 
-    <i class="fa fa-user"></i>
-    <h3>🐼 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 🐼</h3>
-    <h6>Created by 𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍</h6>
-    <h6>🔢 𝙴nter 𝚈our 𝙽umber 𝚆ith 𝙲ountry 𝙲ode</h6>
+    <i class="fa fa-user compact-spacing"></i>
+    <h3 class="compact-spacing">🐼 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝚇 𝐌𝙳 𝐌𝙸𝙽𝙸 𝐁𝙾𝚃 🐼</h3>
+    <h6 class="compact-spacing">Created by 𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍</h6>
+    <h6 class="compact-spacing">🔢 𝙴nter 𝚈our 𝙽umber 𝚆ith 𝙲ountry 𝙲ode</h6>
 
     <div class="input-container">
       <input placeholder="9476xxxxxxx" type="number" id="number">
@@ -230,21 +256,21 @@ for(let i=0;i<60;i++){
   let s=document.createElement("span");
   s.style.left=Math.random()*100+"vw";
   s.style.animationDuration=3+Math.random()*5+"s";
-  s.style.opacity=0.3 + Math.random() * 0.4; /* Reduced opacity for clarity */
-  s.style.background = `rgb(255, ${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*100)})`;
+  s.style.opacity=0.2 + Math.random() * 0.3;
+  s.style.background = `rgb(255, ${Math.floor(Math.random()*80)}, ${Math.floor(Math.random()*80)})`;
   snow.appendChild(s);
 }
 
 /* ================= RED PARTICLES ================= */
 const pBox=document.getElementById("particles");
-for(let i=0;i<25;i++){
+for(let i=0;i<20;i++){
   let p=document.createElement("div");
   p.className="particle";
   p.style.left=Math.random()*100+"vw";
   p.style.top=Math.random()*100+"vh";
   p.style.animationDelay=Math.random()*5+"s";
-  p.style.opacity = 0.4; /* Reduced opacity */
-  p.style.background = `rgb(255, ${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*100)})`;
+  p.style.opacity = 0.3;
+  p.style.background = `rgb(255, ${Math.floor(Math.random()*80)}, ${Math.floor(Math.random()*80)})`;
   pBox.appendChild(p);
 }
 
@@ -274,7 +300,7 @@ b.onclick=async()=>{
   a.innerHTML='<span style="color:#ffcccc">Please Wait...</span>';
   try {
     let {data}=await axios(`/code?number=${num}`);
-    a.innerHTML=`<div id="copy" onclick="Copy()" style="color:#ff3366;font-size:20px;font-weight:bold">CODE: <span style="color:#ffcccc">${data.code||"Unavailable"}</span></div>`;
+    a.innerHTML=`<div id="copy" onclick="Copy()" style="color:#ff3366;font-size:1.1em;font-weight:bold">CODE: <span style="color:#ffcccc">${data.code||"Unavailable"}</span></div>`;
   } catch {
     a.innerHTML='<span style="color:#ff3366">Error getting code</span>';
   }
@@ -282,11 +308,16 @@ b.onclick=async()=>{
 
 // Add red glow effect to input on focus
 c.addEventListener('focus', function() {
-  this.style.boxShadow = '0 0 10px #ff0033';
+  this.style.boxShadow = '0 0 15px #ff0033';
 });
 
 c.addEventListener('blur', function() {
   this.style.boxShadow = 'none';
+});
+
+// Auto-focus on input when page loads
+window.addEventListener('load', function() {
+  c.focus();
 });
 </script>
 

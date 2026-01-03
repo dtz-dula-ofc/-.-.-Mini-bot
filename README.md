@@ -1,7 +1,7 @@
 <!-- 🌟𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 WA BOT | Modern Profile README 🌟 -->
 
 <p align="center">
-  <img src="https://files.catbox.moe/fpyw9m.png" alt="DTZ NOVA X MD WA BOT Banner" width="100%">
+  <img src="https://files.catbox.moe/1grtny.png" alt="𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 WA BOT Banner" width="100%">
 </p>
 
 <h1 align="center">Hi 👋, I'm ꪶ ᴋʟᴡ : 𝐎𝐋𝐃 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ</h1>

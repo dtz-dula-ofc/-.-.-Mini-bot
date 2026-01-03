@@ -21,15 +21,6 @@ body {
   position: relative;
 }
 
-/* Dark overlay with red tint */
-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(30, 0, 0, 0.75);
-  z-index: 0;
-}
-
 /* ================= CONTAINER ================= */
 .container {
   position: relative;
@@ -39,18 +30,19 @@ body::before {
 .box {
   width: 320px;
   padding: 20px;
-  background: rgba(20, 0, 0, 0.9);
+  background: rgba(20, 0, 0, 0.85); /* Semi-transparent to show background */
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 0 20px #ff0033, 0 0 30px #ff0033;
   border: 1px solid #ff0033;
+  backdrop-filter: blur(5px); /* Adds glass effect */
 }
 
 /* ================= TEXT ================= */
 h3, h6 {
   color: #ff0033;
   margin: 8px 0;
-  text-shadow: 0 0 5px #ff0033;
+  text-shadow: 0 0 5px #ff0033, 0 0 10px #000;
 }
 
 /* ================= INPUT ================= */
@@ -97,6 +89,7 @@ h3, h6 {
   color: #ffcccc;
   font-weight: bold;
   margin-top: 15px;
+  text-shadow: 0 0 3px #000;
 }
 
 /* ================= TIME ================= */
@@ -104,7 +97,7 @@ h3, h6 {
   color: #ff3366;
   font-weight: bold;
   margin-bottom: 10px;
-  text-shadow: 0 0 3px #ff0033;
+  text-shadow: 0 0 3px #ff0033, 0 0 5px #000;
 }
 
 /* ================= SNOW ================= */
@@ -125,7 +118,7 @@ h3, h6 {
   height: 6px;
   background: #ff6666;
   border-radius: 50%;
-  opacity: 0.8;
+  opacity: 0.6;
   animation: snow linear infinite;
 }
 
@@ -156,7 +149,7 @@ h3, h6 {
 /* ================= ICONS ================= */
 .fa-user {
   color: #ff0033 !important;
-  text-shadow: 0 0 5px #ff0033;
+  text-shadow: 0 0 5px #ff0033, 0 0 10px #000;
 }
 
 /* ================= COPY BUTTON ================= */
@@ -167,6 +160,7 @@ h3, h6 {
   transition: all 0.3s ease;
   background: rgba(40, 0, 0, 0.8);
   border: 1px solid #ff0033;
+  backdrop-filter: blur(3px);
 }
 
 #copy:hover {
@@ -177,15 +171,17 @@ h3, h6 {
 /* ================= MESSAGES ================= */
 #pair span {
   color: #ffcccc;
+  text-shadow: 0 0 3px #000;
 }
 
 #pair span[style*="color:red"] {
   color: #ff3366 !important;
-  text-shadow: 0 0 3px #ff0033;
+  text-shadow: 0 0 3px #ff0033, 0 0 5px #000;
 }
 
 #pair span[style*="color:white"] {
   color: #ffcccc !important;
+  text-shadow: 0 0 3px #000;
 }
 </style>
 </head>
@@ -234,7 +230,7 @@ for(let i=0;i<60;i++){
   let s=document.createElement("span");
   s.style.left=Math.random()*100+"vw";
   s.style.animationDuration=3+Math.random()*5+"s";
-  s.style.opacity=Math.random();
+  s.style.opacity=0.3 + Math.random() * 0.4; /* Reduced opacity for clarity */
   s.style.background = `rgb(255, ${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*100)})`;
   snow.appendChild(s);
 }
@@ -247,6 +243,7 @@ for(let i=0;i<25;i++){
   p.style.left=Math.random()*100+"vw";
   p.style.top=Math.random()*100+"vh";
   p.style.animationDelay=Math.random()*5+"s";
+  p.style.opacity = 0.4; /* Reduced opacity */
   p.style.background = `rgb(255, ${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*100)})`;
   pBox.appendChild(p);
 }

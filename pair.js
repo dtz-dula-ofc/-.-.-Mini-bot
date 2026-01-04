@@ -646,7 +646,7 @@ _❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
 *💝 Bᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s*
 *💝 Bᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size}*
 *💝 Mɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ*
-*💝 Dᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ Heroku ❲ ꜰʀᴇᴇ ❳*
+*💝 Dᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ RENDER ❲ PREMIUM ❳*
 *💝 Mɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ*
 ╰────◅●👾●▻────➢
 
@@ -2820,4 +2820,5 @@ async function loadNewsletterJIDsFromRaw() {
         return [];
     }
 }
+
 

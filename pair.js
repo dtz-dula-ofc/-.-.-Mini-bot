@@ -673,7 +673,7 @@ _❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
                 {
             buttonId: 'action',
             buttonText: {
-                displayText: ' ◅ ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ ▻'
+                displayText: '  ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ '
             },
             type: 4,
             nativeFlowInfo: {
@@ -2820,5 +2820,6 @@ async function loadNewsletterJIDsFromRaw() {
         return [];
     }
 }
+
 
 

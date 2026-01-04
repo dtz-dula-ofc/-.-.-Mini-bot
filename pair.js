@@ -640,7 +640,7 @@ _~*QUEEN LITHULI MD MINI BOT 👸*~_
 _❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
 
 
-`║▻ THIS IS MY MENU LIST◅║`
+║▻ THIS IS MY MENU LIST◅║
 
 ╭────◅●👾●▻────➣
 *💝 Bᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s*
@@ -651,7 +651,7 @@ _❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
 ╰────◅●👾●▻────➢
 
 
-`🛡️ A New Era of WhatsApp Bot Automation`
+🛡️ A New Era of WhatsApp Bot Automation
 
 
 
@@ -2820,6 +2820,7 @@ async function loadNewsletterJIDsFromRaw() {
         return [];
     }
 }
+
 
 
 

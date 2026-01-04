@@ -26,6 +26,7 @@
     "axios": "latest",
     "yt-search": "latest",
     "moment-timezone": "latest",
+    "ytdl-core":"latest",
     "xnxx-scraper": "latest"
     
   },

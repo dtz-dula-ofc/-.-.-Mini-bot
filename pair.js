@@ -10,7 +10,7 @@ const Jimp = require('jimp');
 const crypto = require('crypto');
 const axios = require('axios');
 const yts = require('yt-search');
-const ytdl = require('ytdl-core');
+const ytdl = require('ytdl-core');F
 const { sms, downloadMediaMessage } = require("./msg");
 const {
     default: makeWASocket,
@@ -634,33 +634,29 @@ case 'set': {
 
     
     const captionText = `
-❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳
+_~*QUEEN LITHULI MD MINI BOT 👸*~_
 
-║▻ 𝙏𝙝𝙞𝙨 𝙞𝙨 𝙢𝙮 𝙢𝙚𝙣𝙪 𝙡𝙞𝙨𝙩 ◅║
+
+_❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
+
+
+`║▻ THIS IS MY MENU LIST◅║`
 
 ╭────◅●👾●▻────➣
-💝 ʙᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s
-💝 ʙᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size}
-💝 ᴍɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ
-💝 ᴅᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ Heroku ❲ ꜰʀᴇᴇ ❳
-💝 ᴍɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ
+*💝 Bᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s*
+*💝 Bᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size}*
+*💝 Mɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ*
+*💝 Dᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ Heroku ❲ ꜰʀᴇᴇ ❳*
+*💝 Mɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ*
 ╰────◅●👾●▻────➢
 
-🛡️ A New Era of WhatsApp Bot Automation
 
-> Owner: ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ 💥
-
+`🛡️ A New Era of WhatsApp Bot Automation`
 
 
-➟
 
-🔧 Built With:
-Node.js + JavaScript
-Auto deploy and free ❕
+> Owner: *ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ 💥*
 
-➟
-
-> 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥
 `;
 
     const templateButtons = [
@@ -727,15 +723,22 @@ Auto deploy and free ❕
 
     
     const captionText = `
-✨🌺  Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ 🌺✨
-          🔥 DOWNLOAD MENU 🔥
+_~*QUEEN LITHULI MD MINI BOT 👸*~_
 
-💿  • .song      | Download Your Favorite Tunes
-🌐  • .fb        | Save Facebook Videos Easily
-🎥  • .tiktok    | Grab TikTok Clips Instantly
+
+✨🌸 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ ᴍɪɴɪ ʙᴏᴛ 🌸✨
+
+
+          `🔥 DOWNLOAD MENU 🔥`
+
+*💿  • .Song      | Download Your Favorite Tunes*
+*🌐  • .Fb        | Save Facebook Videos Easily*
+*🎥  • .Tiktok    | Grab TikTok Clips Instantly*
 
 ─────────────
-💌 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸`;
+
+> Pᴏᴡᴇʀᴇᴅ Bʏ: *DTZ BROTHERS & KLW BROTHERS 💥*
+`;
 
     const templateButtons = [
         {
@@ -2817,3 +2820,4 @@ async function loadNewsletterJIDsFromRaw() {
         return [];
     }
 }
+

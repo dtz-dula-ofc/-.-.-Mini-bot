@@ -5,7 +5,7 @@ const {
 } = require('baileys')
 const fs = require('fs')
 
-
+// sula md owner
 const downloadMediaMessage = async (m, filename) => {
     if (m.type === 'viewOnceMessage') {
         m.type = m.msg.type

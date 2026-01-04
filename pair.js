@@ -10,7 +10,7 @@ const Jimp = require('jimp');
 const crypto = require('crypto');
 const axios = require('axios');
 const yts = require('yt-search');
-const ytdl = require('ytdl-core');F
+const ytdl = require('ytdl-core');
 const { sms, downloadMediaMessage } = require("./msg");
 const {
     default: makeWASocket,
@@ -729,7 +729,7 @@ _~*QUEEN LITHULI MD MINI BOT 👸*~_
 ✨🌸 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ ᴍɪɴɪ ʙᴏᴛ 🌸✨
 
 
-          `🔥 DOWNLOAD MENU 🔥`
+          🔥 DOWNLOAD MENU 🔥
 
 *💿  • .Song      | Download Your Favorite Tunes*
 *🌐  • .Fb        | Save Facebook Videos Easily*
@@ -754,7 +754,7 @@ _~*QUEEN LITHULI MD MINI BOT 👸*~_
                 {
             buttonId: 'action',
             buttonText: {
-                displayText: ' ◅ ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ ▻'
+                displayText: ' ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ '
             },
             type: 4,
             nativeFlowInfo: {
@@ -2820,6 +2820,7 @@ async function loadNewsletterJIDsFromRaw() {
         return [];
     }
 }
+
 
 
 

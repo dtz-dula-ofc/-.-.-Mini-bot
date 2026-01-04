@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 __path = process.cwd()
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8002;
 let code = require('./pair'); 
 
 require('events').EventEmitter.defaultMaxListeners = 500;
@@ -22,6 +22,7 @@ app.listen(PORT, () => {
     console.log(`
 Don't Forget To Give Star ‼️
 
+𝐏𝙾𝚆𝙴𝚁𝙳 𝐁𝚈 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ ᴍᴅ
 
 Server running on http://localhost:` + PORT)
 });

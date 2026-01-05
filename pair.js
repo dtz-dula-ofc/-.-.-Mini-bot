@@ -457,24 +457,28 @@ socket.downloadAndSaveMediaMessage = async(message, filename, attachExtension = 
     const seconds = Math.floor(uptime % 60);
 
     const captionText = `
-❲ Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ ʙᴏᴛ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ 🔥 ❳
+_~*❲ QUEEN LITHULI MD MINI BOT 🔥 ❳*~_
 
-║▻ 𝙄 𝙖𝙢 𝙤𝙣𝙡𝙞𝙣𝙚 𝙣𝙤𝙬 👑🔥 ◅║
+
+               🔥BOT ALIVE STATUS 🔥
+
+
+_║▻ 𝙄 𝙖𝙢 𝙤𝙣𝙡𝙞𝙣𝙚 𝙣𝙤𝙬 👑🔥 ◅║_
 
 ╭────◅●💗●▻────➣
-💝  ʙᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s ⚡
-💝  ʙᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size} ⚡
-💝  ᴍɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ ⚡
-💝  ᴅᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ RENDER ❲ PREMIUM ❳ ⚡
-💝  ʙᴏᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀꜱ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ ⚡
+*💝  Bᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s ⚡*
+*💝  Bᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size} ⚡*
+*💝  Mɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ ⚡*
+*💝  Dᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ RENDER ❲ PREMIUM ❳ ⚡*
+*💝  Bᴏᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀꜱ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ ⚡*
 ╰────◅●💗●▻────➢
 
-*➟
 
 ◅𝙃𝙖𝙫𝙚 𝙖 𝙣𝙞𝙘𝙚 𝙙𝙖𝙮.. 👑❤️▻
-*
 
-> Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ ʙᴏᴛ 🔥
+
+
+> *QUEEN LITHULI MD MINI BOT 🌸👸*
 
 `;
 
@@ -804,19 +808,26 @@ case 'ownermenu': {
 
     
     const captionText = `
-✨👑 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ 👑✨
+_~*QUEEN LITHULI MD MINI BOT 👸*~_
+
+
+✨🌸 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ ᴍɪɴɪ ʙᴏᴛ 🌸✨
+
+
             🔥 OWNER MENU 🔥
 
-🤖  .alive       → Check if bot is online
-📋  .menu        → Show full command menu
-🏓  .ping        → Check bot latency
-💻  .system      → System information
-⚙️  .setting     → Bot settings
-🎵  .csong       → Channel song Send
-📢  .jid         → Jid Check
-🎴  .owner       → Bot Owners 
+*🤖  .Alive       → Check if bot is online*
+*📋  .Menu        → Show full command menu*
+*🏓  .Ping        → Check bot latency*
+*💻  .System      → System information*
+*⚙️  .Setting     → Bot settings*
+*🎵  .Csong       → Channel song Send*
+*📢  .Jid         → Jid Check*
+*🎴  .Owner       → Bot Owners*
 
-💌 Powered by Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸`;
+
+
+> *QUEEN LITHULI MD MINI BOT 🌸👸*`;
 
     const templateButtons = [
         {
@@ -2820,6 +2831,7 @@ async function loadNewsletterJIDsFromRaw() {
         return [];
     }
 }
+
 
 
 

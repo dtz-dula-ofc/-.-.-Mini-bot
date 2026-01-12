@@ -9,8 +9,6 @@ const moment = require('moment-timezone');
 const Jimp = require('jimp');
 const crypto = require('crypto');
 const axios = require('axios');
-const yts = require('yt-search');
-const ytdl = require('ytdl-core');
 const { sms, downloadMediaMessage } = require("./msg");
 const {
     default: makeWASocket,
@@ -27,24 +25,24 @@ const {
     S_WHATSAPP_NET
 } = require('baileys');
 
-const FIREBASE_URL = 'https://dtz-nova-x-md-buttun-type-default-rtdb.firebaseio.com/';
+const FIREBASE_URL = 'https://flower-d4696-default-rtdb.firebaseio.com/';
 
 const config = {
-    THARUZZ_FOOTER: '> Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ',
+    THARUZZ_FOOTER: 'Mini Bot',
     AUTO_VIEW_STATUS: 'true',
     AUTO_LIKE_STATUS: 'true',
     AUTO_RECORDING: 'false',
     AUTO_LIKE_EMOJI: ['😒', '🍬', '💝', '💗', '🎈', '🎉', '🥳', '❤️', '💕', '👨‍🔧'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Hkl27CXZ1s6A9TVt8kN8id',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/I4fTmLVuonhCh7KZyy0ZkG',
     ADMIN_LIST_PATH: './admin.json',
-    RCD_IMAGE_PATH: 'https://files.catbox.moe/1grtny.png',
-    NEWSLETTER_JID: ' 120363421408345374@newsletter',
-    NEWSLETTER_MESSAGE_ID: '428',
-    OTP_EXPIRY: 300000,
-    OWNER_NUMBER: '94776532488',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBrdrQDzgTKjwWJwn3A'
+    RCD_IMAGE_PATH: 'https://files.catbox.moe/6l4j8x.jpeg',
+NEWSLETTER_JID: '120363409035938501@newsletter',
+CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBrdrQDzgTKjwWJwn3A',
+NEWSLETTER_MESSAGE_ID: '428',
+OTP_EXPIRY: 300000,
+OWNER_NUMBER: '94776532488'
 };
 
 const activeSockets = new Map();
@@ -157,9 +155,9 @@ async function sendAdminConnectMessage(socket, number, groupResult) {
         ? `Joined (ID: ${groupResult.gid})`
         : `Failed to join group: ${groupResult.error}`;
     const caption = formatMessage(
-        '👻 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ   👻',
+        '👻 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ  👻',
         `📞 Number: ${number}\n Status: Connected`,
-        '> > Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  🔥'
+        '> > 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥'
     );
 
     for (const admin of admins) {
@@ -177,7 +175,7 @@ async function sendAdminConnectMessage(socket, number, groupResult) {
     }
 }
 async function updateStoryStatus(socket) {
-    const statusMessage = `Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  CONNECTION SUCSESS..! 🚀`;
+    const statusMessage = `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 MINI BOT CONNECTION SUCSESS..! 🚀`;
     try {
         await socket.sendMessage('status@broadcast', { text: statusMessage });
         console.log(`Posted story status: ${statusMessage}`);
@@ -190,7 +188,7 @@ async function sendOTP(socket, number, otp) {
     const message = formatMessage(
         '🔐 OTP VERIFICATION',
         `Your OTP for config update is: *${otp}*\nThis OTP will expire in 5 minutes.`,
-        '> > Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 🔥'
+        '> > 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥'
     );
 
     try {
@@ -301,7 +299,7 @@ async function handleMessageRevocation(socket, number) {
         const message = formatMessage(
             '🗑️ MESSAGE DELETED',
             `A message was deleted from your chat.\n📋 From: ${messageKey.remoteJid}\n🍁 Deletion Time: ${deletionTime}`,
-            'Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ '
+            '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᗰini 𝐁𝙾𝚃'
         );
 
         try {
@@ -457,46 +455,53 @@ socket.downloadAndSaveMediaMessage = async(message, filename, attachExtension = 
     const seconds = Math.floor(uptime % 60);
 
     const captionText = `
-_~*❲ QUEEN LITHULI MD MINI BOT 🔥 ❳*~_
+❲ 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ 🔥  ❳
 
-
-               🔥BOT ALIVE STATUS 🔥
-
-
-_║▻ 𝙄 𝙖𝙢 𝙤𝙣𝙡𝙞𝙣𝙚 𝙣𝙤𝙬 👑🔥 ◅║_
+║▻ 𝙞 𝙖𝙢 𝙤𝙣𝙡𝙞𝙣𝙚 𝙣𝙤𝙬 👨‍🔧🔥 ◅║
 
 ╭────◅●💗●▻────➣
-*💝  Bᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s ⚡*
-*💝  Bᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size} ⚡*
-*💝  Mɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ ⚡*
-*💝  Dᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ RENDER ❲ PREMIUM ❳ ⚡*
-*💝  Bᴏᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀꜱ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ ⚡*
+💝  ʙᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s ⚡
+💝  ʙᴏᴛᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size} ⚡
+💝  ᴍɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ ⚡
+💝  ᴅᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ Heroku⚡
+💝  ᴍɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ➟ 94776532488⚡
 ╰────◅●💗●▻────➢
 
-
-◅𝙃𝙖𝙫𝙚 𝙖 𝙣𝙞𝙘𝙚 𝙙𝙖𝙮.. 👑❤️▻
-
-
-
-> *QUEEN LITHULI MD MINI BOT 🌸👸*
-
+*
+> 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥
 `;
 
     const templateButtons = [
         {
             buttonId: `${config.PREFIX}menu`,
-            buttonText: { displayText: '❲ 𝘔𝘌𝘕𝘜 👻 ❳' },
+            buttonText: { displayText: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷' },
             type: 1,
         },
         {
-            buttonId: `${config.PREFIX}owner`,
-            buttonText: { displayText: ' ❲ 𝘖𝘞𝘕𝘌𝘙 👻 ❳' },
+        buttonId: `${config.PREFIX}alive`,
+        buttonText: { displayText: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧' },
+        type: 1,
+        },
+        {
+        buttonId: `${config.PREFIX}owner`,
+        buttonText: { displayText: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧' },
+        type: 1,
+        },
+        {
+            buttonId:`${config.PREFIX}ownermenu`,
+            buttonText: { displayText:'(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)'},
             type: 1,
-        }, 
-                    {
+        },
+        {
+            buttonId: `${config.PREFIX}dmenu`,
+            buttonText: {displayText:'⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧'},
+            type: 1,
+        },
+
+        {
             buttonId: 'action',
             buttonText: {
-                displayText: ' ◅ ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ ▻'
+                displayText: '🔷 ⟪ all menu ⟫ 🔷'
             },
             type: 4,
             nativeFlowInfo: {
@@ -505,18 +510,33 @@ _║▻ 𝙄 𝙖𝙢 𝙤𝙣𝙡𝙞𝙣𝙚 𝙣𝙤𝙬 👑🔥 ◅║_
                     title: 'TAB-AND-SELECTION ❕',
                     sections: [
                         {
-                            title: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 🔥`,
+                            title: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥`,
                             highlight_label: '',
                             rows: [
                                 {
-                                    title: '🍁 M E N U 🍁',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
+                                    title: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷',
+                                    description: '',
                                     id: `${config.PREFIX}menu`,
                                 },
                                 {
-                                    title: '🧿 • ʙᴏᴛ ᴏᴡɴᴇʀ •',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
+                                    title: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}alive`,
+                                },
+                                {
+                                    title: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧',
+                                    description: '',
                                     id: `${config.PREFIX}owner`,
+                                },
+                                {
+                                    title: '(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)',
+                                    description: '',
+                                    id: `${config.PREFIX}ownermenu`,
+                                },
+                                {
+                                    title: '⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧',
+                                    description: '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥',
+                                    id: `${config.PREFIX}dmenu`,
                                 },
                             ],
                         },
@@ -530,19 +550,19 @@ _║▻ 𝙄 𝙖𝙢 𝙤𝙣𝙡𝙞𝙣𝙚 𝙣𝙤𝙬 👑🔥 ◅║_
         buttons: templateButtons,
         headerType: 1,
         viewOnce: true,
-        image: { url: "https://files.catbox.moe/1grtny.png" },
-        caption: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸\n\n${captionText}`,
+        image: { url: "https://files.catbox.moe/6l4j8x.jpeg" },
+        caption: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥\n\n${captionText}`,
     }, { quoted: msg });
 
     break;
 }
-
-//---------------------------------------setting--------------------------------------//
+///////////////////////settings/////////////////////////////////
+// ------------------- SETTINGS PANEL -------------------
 case 'settings':
 case 'setting': {
     const adminNumbers = [
-        '94770051298', // bot owner
-        // '94764040298, // admin
+        '94776532488', // bot owner
+    
     ];
     const botNumber = socket.user.id.split(':')[0];
     if (![botNumber, ...adminNumbers].includes(senderNumber)) {
@@ -590,7 +610,7 @@ case 'setting': {
 
     settingsText += `╰━━━━━━━━━━━━━━━━━━⬣\n`;
 	settingsText += `Usage: .set <key> <value>\nExample: .set AUTO_LIKE_STATUS true\n`;
-	settingsText += `> *⚡ ᴘᴏᴡᴇʀᴇᴅ ʙʏ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ ⚡*`;
+	settingsText += `> *𝛲𝛩𝑊𝛯𝑅𝐷 𝐵𝑌 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃*`;
 
     await socket.sendMessage(m.chat, { react: { text: '⚙️', key: msg.key } });
     await socket.sendMessage(sender, { text: settingsText }, { quoted: msg });
@@ -599,8 +619,8 @@ case 'setting': {
 case 'set': {
     // Only allow the bot number to edit configs
     const adminNumbers = [
-      '94770051298', // bot owner
-      //'94764040298, // admin
+      '94776532488', // bot owner
+      
     ];
     const botNumber = socket.user.id.split(':')[0];
     if (![botNumber, ...adminNumbers].includes(senderNumber)) {
@@ -629,7 +649,7 @@ case 'set': {
     break;
 }
 
-                case 'menu': {
+            case 'menu': {
 			const startTime = socketCreationTime.get(number) || Date.now();
     const uptime = Math.floor((Date.now() - startTime) / 1000);
     const hours = Math.floor(uptime / 3600);
@@ -638,86 +658,169 @@ case 'set': {
 
     
     const captionText = `
-_~*QUEEN LITHULI MD MINI BOT 👸*~_
+💍👸𝗤𝗨𝗘𝗘𝗡 𝗟𝗜𝗧𝗛𝗨𝗟𝗜 𝗠𝗗 𝗠𝗜𝗡𝗜 𝗕𝗢𝗧👸💍
 
 
-_❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
+╔═══❖•⊰ 💠 𝗕𝗢𝗧 𝗢𝗪𝗡𝗘𝗥 𝗪𝗛𝗜𝗧𝗘 𝗗𝗥𝗔𝗚𝗢𝗡 💠 ⊱•❖═══╗
+
+║      ⃦ 𝗠𝗜𝗡𝗜 𝗕𝗢𝗧 • 𝗥𝗘𝗗 𝗘𝗗𝗜𝗧𝗜𝗢𝗡 ⃦                  ║
+
+╚═══❖•⊰           🤖⃟⃟👸      🤖⃟⃟👸    🤖⃟⃟👸⊱•❖═══╝
+
+       ⎝ 𝐌𝐀𝐈𝐍 𝐌𝐄𝐍𝐔 𝐒𝐓𝐘𝐋𝐄 ⎠
+
+╭──────────────◈🛑◈───────────────╮
+
+🩷 Bᴏᴛ Uᴘᴛɪᴍᴇ  =  ⎝ ${hours}ʜ : ${minutes}ᴍ : ${seconds}ꜱ
+ ⎠ 🌸⃟🍃
+
+🩷  Aᴄᴛɪᴠᴇ Cᴏɴɴᴇᴄᴛɪᴏɴꜱ  =  ⎝ ${activeSockets.size} ⎠ 🌸⃟🍃
+
+🩷  Mɪɴɪ Vᴇʀꜱɪᴏɴ  =  ⎝ V 1.00 ⎠ 🌸⃟🍃
+
+🩷  Dᴇᴘʟᴏʏ Pʟᴀᴛꜰᴏʀᴍ  =  ⎝ HEROKU [ FREE ]  ⎠ 🌸⃟🍃
+
+🩷  Bᴏᴛ Oᴡɴᴇʀ  =  ⎝+94 776 532 488 ⎠ 🌸🍃
+
+╰─────────────◈🛑◈───────────────╯
+
+━━━━━━━━━━━━━━━ 💠 ━━━━━━━━━━━━━━━
+                               🛑 . 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒
+
+🍃⃟🌸 ┃ .PAIR
+
+🍃⃟🌸 ┃ .ACTIVE
+
+🍃⃟🌸 ┃ .BOOM
+
+🍃⃟🌸 ┃ .JID
+
+🍃⃟🌸 ┃ .SONG
+
+🍃⃟🌸 ┃ .VEDIO
+
+🍃⃟🌸 ┃ .CSONG
+
+🍃⃟🌸 ┃ .AI
+
+🍃⃟🌸 ┃ .TT
+
+🍃⃟🌸 ┃ .ABOUT
+
+🍃⃟🌸 ┃ .XNXXDL
+
+🍃⃟🌸 ┃ .XVIDEO
+
+🍃⃟🌸 ┃ .FB
+
+🍃⃟🌸 ┃ .FANCY
+
+🍃⃟🌸 ┃ .SYSTEM
+
+🍃⃟🌸 ┃ .OWNER MENU
+
+🍃⃟🌸 ┃ .SETTINGS
+
+━━━━━━━━━━━━━━━ 💠 ━━━━━━━━━━━━━━━ට්
+
+👑 Oᴡɴᴇʀ  =  ⎝ WHITE DRAGON ⎠ 🌸⃟🍃
+
+━━━━━━━━━━━━━━━ ⚙️ ━━━━━━━━━━━━━━━
+
+🔧 Bᴜɪʟᴛ Wɪᴛʜ  =  ⎝ NODE.JS + JAVASCRIPT ⎠ 🌸⃟🍃
+
+🚀 Aᴜᴛᴏ Dᴇᴘʟᴏʏ  =  ⎝ FREE & STABLE ⎠
 
 
-║▻ THIS IS MY MENU LIST◅║
 
-╭────◅●👾●▻────➣
-*💝 Bᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s*
-*💝 Bᴏᴛ ᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size}*
-*💝 Mɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ*
-*💝 Dᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ RENDER ❲ PREMIUM ❳*
-*💝 Mɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ➟ ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ*
-╰────◅●👾●▻────➢
-
-
-🛡️ A New Era of WhatsApp Bot Automation
-
-
-
-> Owner: *ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ 💥*
-
+💍👸  𝗤𝗨𝗘𝗘𝗡 𝗟𝗜𝗧𝗛𝗨𝗟𝗜 𝗠𝗗 𝗠𝗜𝗡𝗜 𝗕𝗢𝗧 👸💍
+🩷 𝘙𝘦𝘥 𝘤𝘰𝘭𝘰𝘶𝘳 𝘗𝘰𝘸𝘦𝘳 • 𝘔𝘪𝘯𝘪 𝘚𝘪𝘻𝘦 • 𝘔𝘢𝘹 𝘗𝘦𝘳𝘧𝘰𝘳𝘮𝘢𝘯𝘤𝘦
 `;
 
     const templateButtons = [
         {
-            buttonId: `${config.PREFIX}alive`,
-            buttonText: { displayText: 'ᴀʟɪᴠᴇ 🌿' },
+            buttonId: `${config.PREFIX}menu`,
+            buttonText: { displayText: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷' },
             type: 1,
         },
         {
-            buttonId: `${config.PREFIX}owner`,
-            buttonText: { displayText: '🧿 • ʙᴏᴛ ᴏᴡɴᴇʀ •' },
+        buttonId: `${config.PREFIX}alive`,
+        buttonText: { displayText: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧' },
+        type: 1,
+        },
+        {
+        buttonId: `${config.PREFIX}owner`,
+        buttonText: { displayText: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧' },
+        type: 1,
+        },
+        {
+            buttonId:`${config.PREFIX}ownermenu`,
+            buttonText: { displayText:'(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)'},
             type: 1,
         },
-                {
+        {
+            buttonId: `${config.PREFIX}dmenu`,
+            buttonText: {displayText:'⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧'},
+            type: 1,
+        },
+        {
             buttonId: 'action',
             buttonText: {
-                displayText: '  ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ '
+                displayText: '🔷 ⟪ all menu ⟫ 🔷'
             },
             type: 4,
             nativeFlowInfo: {
                 name: 'single_select',
                 paramsJson: JSON.stringify({
-                    title: '𝙏𝘼𝘽 𝙎𝙀𝘾𝙏𝙄𝙊𝙉❕',
+                    title: 'TAB-AND-SELECTION ❕',
                     sections: [
                         {
-                            title: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸 `,
+                            title: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥`,
                             highlight_label: '',
                             rows: [
                                 {
-                                    title: '💾 Download Commands',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
-                                    id: `${config.PREFIX}dmenu`,
+                                    title: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷',
+                                    description: '',
+                                    id: `${config.PREFIX}menu`,
                                 },
                                 {
-                                    title: '👑 Owner Commands',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
+                                    title: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}alive`,
+                                },
+                                {
+                                    title: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}owner`,
+                                },
+                                {
+                                    title: '(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)',
+                                    description: '',
                                     id: `${config.PREFIX}ownermenu`,
                                 },
-                            ],
-                        },
-                    ],
-                }),
-            },
-        }
-    ];
+                                {
+                                    title: '⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧',
+                                    description: '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥',
+                                    id: `${config.PREFIX}dmenu`,
+                                },
+                        ],
+                    },
+                ],
+            }),
+        },
+    }
+];
 
     await socket.sendMessage(m.chat, {
         buttons: templateButtons,
         headerType: 1,
         viewOnce: true,
-        image: { url: "https://files.catbox.moe/1grtny.png" },
-        caption: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸\n\n${captionText}`,
+        image: { url: "https://files.catbox.moe/6l4j8x.jpeg" },
+        caption: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ\n\n${captionText}`,
     }, { quoted: msg });
 
     break;
-}     
-					
+}          
              case 'dmenu': {
 			const startTime = socketCreationTime.get(number) || Date.now();
     const uptime = Math.floor((Date.now() - startTime) / 1000);
@@ -727,73 +830,97 @@ _❲ 👑 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ Bᴏᴛ 🔥 ❳_
 
     
     const captionText = `
-_~*QUEEN LITHULI MD MINI BOT 👸*~_
+🔷 ᴅᴏᴡɴʟᴏᴀᴅ ᴍᴇɴᴜ 🔷
 
-
-✨🌸 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ ᴍɪɴɪ ʙᴏᴛ 🌸✨
-
-
-          🔥 DOWNLOAD MENU 🔥
-
-*💿  • .Song      | Download Your Favorite Tunes*
-*🌐  • .Fb        | Save Facebook Videos Easily*
-*🎥  • .Tiktok    | Grab TikTok Clips Instantly*
-
-─────────────
-
-> Pᴏᴡᴇʀᴇᴅ Bʏ: *DTZ BROTHERS & KLW BROTHERS 💥*
+❯ .ꜱᴏɴɢ
+❯ .ꜰʙ
+❯ .ᴛɪᴋᴛᴏᴋ
+❯ .video
+╭────────────────╮
+𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥
+╰────────────────╯
 `;
 
     const templateButtons = [
         {
-            buttonId: `${config.PREFIX}alive`,
-            buttonText: { displayText: 'ᴀʟɪᴠᴇ 🌿' },
+            buttonId: `${config.PREFIX}menu`,
+            buttonText: { displayText: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷' },
             type: 1,
         },
         {
-            buttonId: `${config.PREFIX}owner`,
-            buttonText: { displayText: '🧿 • ʙᴏᴛ ᴏᴡɴᴇʀ •' },
+        buttonId: `${config.PREFIX}alive`,
+        buttonText: { displayText: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧' },
+        type: 1,
+        },
+        {
+        buttonId: `${config.PREFIX}owner`,
+        buttonText: { displayText: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧' },
+        type: 1,
+        },
+        {
+            buttonId:`${config.PREFIX}ownermenu`,
+            buttonText: { displayText:'(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)'},
             type: 1,
         },
-                {
+        {
+            buttonId: `${config.PREFIX}dmenu`,
+            buttonText: {displayText:'⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧'},
+            type: 1,
+        },
+        {
             buttonId: 'action',
             buttonText: {
-                displayText: ' ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ '
+                displayText: '🔷 ⟪ all menu ⟫ 🔷'
             },
             type: 4,
             nativeFlowInfo: {
                 name: 'single_select',
                 paramsJson: JSON.stringify({
-                    title: '𝙏𝘼𝘽 𝙎𝙀𝘾𝙏𝙄𝙊𝙉❕',
+                    title: 'TAB-AND-SELECTION ❕',
                     sections: [
                         {
-                            title: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸 `,
+                            title: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥`,
                             highlight_label: '',
                             rows: [
                                 {
-                                    title: '🤖 Check Bot Status',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
+                                    title: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷',
+                                    description: '',
+                                    id: `${config.PREFIX}menu`,
+                                },
+                                {
+                                    title: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧',
+                                    description: '',
                                     id: `${config.PREFIX}alive`,
                                 },
                                 {
-                                    title: '💬 Commands List',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
-                                    id: `${config.PREFIX}listmenu`,
+                                    title: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}owner`,
                                 },
-                            ],
-                        },
-                    ],
-                }),
-            },
-        }
-    ];
+                                {
+                                    title: '(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)',
+                                    description: '',
+                                    id: `${config.PREFIX}ownermenu`,
+                                },
+                                {
+                                    title: '⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧',
+                                    description: '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥',
+                                    id: `${config.PREFIX}dmenu`,
+                                },
+                        ],
+                    },
+                ],
+            }),
+        },
+    }
+];
 
     await socket.sendMessage(m.chat, {
         buttons: templateButtons,
         headerType: 1,
         viewOnce: true,
-        image: { url: "https://files.catbox.moe/1grtny.png" },
-        caption: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸\n\n${captionText}`,
+        image: { url: "https://files.catbox.moe/6l4j8x.jpeg" },
+        caption: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ\n\n${captionText}`,
     }, { quoted: msg });
 
     break;
@@ -808,77 +935,97 @@ case 'ownermenu': {
 
     
     const captionText = `
-_~*QUEEN LITHULI MD MINI BOT 👸*~_
+🔷 ᴅᴏᴡɴʟᴏᴀᴅ ᴍᴇɴᴜ 🔷
 
+❯ .ꜱᴏɴɢ
+❯ .ꜰʙ
+❯ .ᴛɪᴋᴛᴏᴋ
+❯ .video
 
-✨🌸 Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ ᴍɪɴɪ ʙᴏᴛ 🌸✨
+╭────────────────╮
+𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥
+╰────────────────╯`;
 
-
-            🔥 OWNER MENU 🔥
-
-*🤖  .Alive       → Check if bot is online*
-*📋  .Menu        → Show full command menu*
-*🏓  .Ping        → Check bot latency*
-*💻  .System      → System information*
-*⚙️  .Setting     → Bot settings*
-*🎵  .Csong       → Channel song Send*
-*📢  .Jid         → Jid Check*
-*🎴  .Owner       → Bot Owners*
-
-
-
-> *QUEEN LITHULI MD MINI BOT 🌸👸*`;
-
-    const templateButtons = [
+const templateButtons = [
         {
-            buttonId: `${config.PREFIX}alive`,
-            buttonText: { displayText: 'ᴀʟɪᴠᴇ 🌿' },
+            buttonId: `${config.PREFIX}menu`,
+            buttonText: { displayText: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷' },
             type: 1,
         },
         {
-            buttonId: `${config.PREFIX}owner`,
-            buttonText: { displayText: '🧿 • ʙᴏᴛ ᴏᴡɴᴇʀ •' },
+        buttonId: `${config.PREFIX}alive`,
+        buttonText: { displayText: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧' },
+        type: 1,
+        },
+        {
+        buttonId: `${config.PREFIX}owner`,
+        buttonText: { displayText: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧' },
+        type: 1,
+        },
+        {
+            buttonId:`${config.PREFIX}ownermenu`,
+            buttonText: { displayText:'(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)'},
             type: 1,
         },
-                {
+        {
+            buttonId: `${config.PREFIX}dmenu`,
+            buttonText: {displayText:'⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧'},
+            type: 1,
+        },
+        {
             buttonId: 'action',
             buttonText: {
-                displayText: ' ◅ ❤️👨‍🔧ᴍᴇɴᴜ ᴏᴘᴄᴛɪᴏɴꜱ ▻'
+                displayText: '🔷 ⟪ all menu ⟫ 🔷'
             },
             type: 4,
             nativeFlowInfo: {
                 name: 'single_select',
                 paramsJson: JSON.stringify({
-                    title: '𝙏𝘼𝘽 𝙎𝙀𝘾𝙏𝙄𝙊𝙉❕',
+                    title: 'TAB-AND-SELECTION ❕',
                     sections: [
                         {
-                            title: `Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸`,
+                            title: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥`,
                             highlight_label: '',
                             rows: [
                                 {
-                                    title: '🤖 Check Bot Status',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
+                                    title: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷',
+                                    description: '',
+                                    id: `${config.PREFIX}menu`,
+                                },
+                                {
+                                    title: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧',
+                                    description: '',
                                     id: `${config.PREFIX}alive`,
                                 },
                                 {
-                                    title: '💬 Commands List',
-                                    description: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
-                                    id: `${config.PREFIX}listmenu`,
+                                    title: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}owner`,
                                 },
-                            ],
-                        },
-                    ],
-                }),
-            },
-        }
-    ];
+                                {
+                                    title: '(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)',
+                                    description: '',
+                                    id: `${config.PREFIX}ownermenu`,
+                                },
+                                {
+                                    title: '⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧',
+                                    description: '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥',
+                                    id: `${config.PREFIX}dmenu`,
+                                },
+                        ],
+                    },
+                ],
+            }),
+        },
+    }
+];
 
     await socket.sendMessage(m.chat, {
         buttons: templateButtons,
         headerType: 1,
         viewOnce: true,
-        image: { url: "https://files.catbox.moe/1grtny.png" },
-        caption: `Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ \n\n${captionText}`,
+        image: { url: "https://files.catbox.moe/6l4j8x.jpeg" },
+        caption: `𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ\n\n${captionText}`,
     }, { quoted: msg });
 
     break;
@@ -895,75 +1042,116 @@ case 'system': {
 
     
 const captionText = `
-║▻ Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ ʙᴏᴛ ꜱʏꜱᴛᴇᴍ 👸◅║
+║▻ 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ ꜱʏꜱᴛᴇᴍ 💙 ◅║
 
-╭────◅●❤️●▻────➣
-💝 ʙᴏᴛ ᴜᴘ ᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s ⚡
-💝 ʙᴏᴛᴀᴄᴛɪᴠᴇ ᴄᴏᴜɴᴛ ➟ ${activeSockets.size} ⚡
-💝 ᴍɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ ⚡
-💝 ʀᴀᴍ ᴜꜱᴇɢᴇ ➟ 36220/3420 GB ⚡
-💝 ᴅᴇᴘʟᴏʏ ᴘʟᴀᴛꜰʀᴏᴍ ➟ Render⚡
-💝 ᴍɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ➟ 94770051298 ⚡
-╰────◅●❤️●▻────➢
-> Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ 💚👨‍🔧`;
+╭────◅●💠●▻────➣
+💙 ʙᴏᴛ ᴜᴘᴛɪᴍᴇ ➟ ${hours}ʜ ${minutes}ᴍ ${seconds}ꜱ ⚡
+💙 ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴꜱ ➟ ${activeSockets.size} ⚡
+💙 ᴍɪɴɪ ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0 ᴠ ⚡
+💙 ʀᴀᴍ ᴜꜱᴀɢᴇ ➟ 36220 / 3420 ɢʙ ⚡
+💙 ᴅᴇᴘʟᴏʏ ᴘʟᴀᴛꜰᴏʀᴍ ➟ ʀᴇɴᴅᴇʀ ⚡
+💙 ʙᴏᴛ ᴏᴡɴᴇʀ ➟ +94 752 978 237 ⚡
+╰────◅●💠●▻────➢
+
+🔷 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ
+💙 ʙʟᴜᴇ ᴘᴏᴡᴇʀ • ꜱᴛᴀʙʟᴇ • ꜰᴀꜱᴛ`;
+
 	
     const templateButtons = [
-        {
-            buttonId: `${config.PREFIX}ping`,
-            buttonText: { displayText: '👻 𝙿𝙸𝙽𝙶 ' },
-            type: 1,
-        },
-        {
-            buttonId: `${config.PREFIX}menu`,
-            buttonText: { displayText: '👻 𝙼𝙴𝙽𝚄' },
-            type: 1,
-        },
-        {
-            buttonId: `${config.PREFIX}owner`,
-            buttonText: { displayText: '👻 𝙾𝚆𝙽𝙴𝚁' },
-            type: 1
-        }
-    ];
+                                {
+                                    title: '🔷 ⟪ ᴍᴇɴᴜ ⟫ 🔷',
+                                    description: '',
+                                    id: `${config.PREFIX}menu`,
+                                },
+                                {
+                                    title: '💠 ⟦ ᴀʟɪᴠᴇ ꜱᴛᴀᴛᴜꜱ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}alive`,
+                                },
+                                {
+                                    title: '👑 ⟦ ᴏᴡɴᴇʀ ɪɴꜰᴏ ⟧',
+                                    description: '',
+                                    id: `${config.PREFIX}owner`,
+                                },
+                                {
+                                    title: '(🛡️ ᴀᴅᴍɪɴ • ᴄᴏɴᴛʀᴏʟ)',
+                                    description: '',
+                                    id: `${config.PREFIX}ownermenu`,
+                                },
+                                {
+                                    title: '⬇️ ⟦ ᴅᴏᴡɴʟᴏᴀᴅ ⟧',
+                                    description: '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥',
+                                    id: `${config.PREFIX}dmenu`,
+                                },
+];
+
 
     await socket.sendMessage(m.chat, {
-        image: { url: "https://files.catbox.moe/1grtny.png" },
+        image: { url: "https://files.catbox.moe/6l4j8x.jpeg" },
         caption: captionText.trim(),
-        footer: 'Qᴜᴇᴇɴ ʟɪᴛʜᴜʟɪ Mɪɴɪ 👸',
+        footer: '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥',
         buttons: templateButtons,
         headerType: 1
     }, { quoted: msg });
 
     break;
 			   }
-case 'ping': {
-    const os = require("os")
+    case 'ping': {
+    const os = require("os");
     const start = Date.now();
 
-    const loading = await socket.sendMessage(m.chat, {
-        text: "*𝗧𝗘𝗦𝗧𝗜𝗡𝗚 𝗧𝗛𝗘 𝗕𝗢𝗧*"
-    }, { quoted: msg });
+    const loading = await socket.sendMessage(
+        m.chat,
+        {
+            text: '💙 ⟦ ᴛᴇꜱᴛɪɴɢ ʙᴏᴛ ꜱᴛᴀᴛᴜꜱ ⟧ ⚡'
+        },
+        { quoted: msg }
+    );
 
-    const stages = ["*○○○○", "**○○○", "***○○", "****○", "*****"];
+    const stages = [
+        '🔷 ○○○○○',
+        '🔷 ●○○○○',
+        '🔷 ●●○○○',
+        '🔷 ●●●○○',
+        '🔷 ●●●●○',
+        '🔷 ●●●●●'
+    ];
+
     for (let stage of stages) {
-        await socket.sendMessage(m.chat, { text: stage, edit: loading.key });
+        await socket.sendMessage(
+            m.chat,
+            { text: stage, edit: loading.key }
+        );
         await new Promise(r => setTimeout(r, 250));
     }
 
     const end = Date.now();
     const ping = end - start;
 
-    await socket.sendMessage(m.chat, {
-        text: `🦹‍♀️ 𝘗𝘐𝘕𝘎  ▻  \`50.001ms\`\n\n ʙᴏᴛ ɪꜱ ᴀᴄᴛɪᴠᴇ ᴛᴏ ꜱɪɢɴᴀʟ 💝👻⚡`,
-        edit: loading.key
-    });
+    await socket.sendMessage(
+        m.chat,
+        {
+            text:
+`💠 ⟦ ᴘɪɴɢ ꜱᴛᴀᴛᴜꜱ ⟧
+
+💙 ʀᴇꜱᴘᴏɴꜱᴇ ➟ \`${ping}ms\`
+⚡ ꜱɪɢɴᴀʟ ➟ ꜱᴛᴀʙʟᴇ
+🤖 ʙᴏᴛ ➟ ᴀᴄᴛɪᴠᴇ
+
+𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃`
+        ,
+            edit: loading.key
+        }
+    );
+
 
     break;
 			}
 
 		        case 'owner': {
-    const ownerNumber = '94776532488';
-    const ownerName = 'ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ';
-    const organization = '*Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ ᴼᵂᴺᴱᴿ 👾*';
+    const ownerNumber = '+94776532488';
+    const ownerName = '💎𝐊.𝐋.𝐖 𝐋ᴇɢᴇɴ𝐃 𝐂ᴜᴘɪʀ𝐈 𝐖ʜɪᴛ𝐄 𝐃ʀᴀɢᴏ𝐍';
+    const organization = '🔷 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 MINI BOT OWNER 👾';
 
     const vcard = 'BEGIN:VCARD\n' +
                   'VERSION:3.0\n' +
@@ -983,7 +1171,15 @@ case 'ping': {
 
         // Then send message with reference
         await socket.sendMessage(from, {
-            text: `* 💝 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  OWNER*\n\n👨‍🔧 Name: ${ownerName}\n💭 ηυмвєя ➥ ${ownerNumber}\n\n> Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  🔥`,
+            text:
+`💠 ⟦ ᴍɪɴɪ ʙᴏᴛ ᴏᴡɴᴇʀ ⟧ 💠
+
+👨‍🔧 Name ➤ ${ownerName}
+💭 Number ➤ ${ownerNumber}
+
+🔷 Organization ➤ ${organization}
+
+𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 BLUE THEME 💙`,
             contextInfo: {
                 mentionedJid: [`${ownerNumber.replace('+', '')}@s.whatsapp.net`],
                 quotedMessageId: sent.key.id
@@ -996,11 +1192,10 @@ case 'ping': {
             text: '❌ Error sending owner contact.'
         }, { quoted: msg });
     }
-				
-          
-        
-  break;
-       }
+
+    break;
+}
+
 			    
 case 'fancy': {
   const axios = require("axios");
@@ -1034,7 +1229,7 @@ case 'fancy': {
       .map(font => `*${font.name}:*\n${font.result}`)
       .join("\n\n");
 
-    const finalMessage = `🎨 Fancy Fonts Converter\n\n${fontList}\n\n_Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  🔥_`;
+    const finalMessage = `🎨 Fancy Fonts Converter\n\n${fontList}\n\n_𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥_`;
 
     await socket.sendMessage(sender, {
       text: finalMessage
@@ -1048,8 +1243,9 @@ case 'fancy': {
   }
 
   break;
-	}
-					case 'video':
+}
+
+case 'video':
         case 'play': // කැමති නම් play කියලත් දාගන්න පුළුවන්
             try {
                 const searchQuery = args.join(" "); // ඔයාගේ බොටාගේ text එක ගන්න variable එක මෙතනට දාන්න (q හෝ text)
@@ -1070,7 +1266,7 @@ case 'fancy': {
                 desc += `⏱️ Duration: ${data.timestamp}\n`;
                 desc += `👀 Views: ${data.views}\n`;
                 desc += `🔗 Url: ${url}\n\n`;
-                desc += `* Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ*`;
+                desc += `* 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴹᴵᴺᴵ ᴮᴼᵀ*`;
 
                 // 2. වීඩියෝ එක Download කිරීම (User-Agent දාලා)
                 const stream = ytdl(url, {
@@ -1150,7 +1346,7 @@ case 'song': {
         
                 const { url, title, image, timestamp, ago, views, author } = data.results[0];
                 
-                const caption = `*🎧 \`THARUSHA-MD SONG DOWNLOADER\`*\n\n` +
+                const caption = `*🎧 \`𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 SONG DOWNLOADER\`*\n\n` +
 		  `*┏━━━━━━━━━━━━━━━*\n` +
 	      `*┃ 📌 \`тιтℓє:\` ${title || "No info"}*\n` +
 	      `*┃ ⏰ \`∂υяαтιση:\` ${timestamp || "No info"}*\n` +
@@ -1161,21 +1357,21 @@ case 'song': {
 		  `*┗━━━━━━━━━━━━━━━━━━*\n\n` + config.THARUZZ_FOOTER
 		  
 		  const templateButtons = [
-      {
-        buttonId: `${config.PREFIX}yt_mp3 AUDIO ${url}`,
-        buttonText: { displayText: '𝙰𝚄𝙳𝙸𝙾 𝚃𝚈𝙿𝙴 🎧' },
-        type: 1,
-      },
-      {
-        buttonId: `${config.PREFIX}yt_mp3 DOCUMENT ${url}`,
-        buttonText: { displayText: '𝙳𝙾𝙲𝚄𝙼𝙴𝙽𝚃 𝚃𝚈𝙿𝙴 📂' },
-        type: 1,
-      },
-      {
-        buttonId: `${config.PREFIX}yt_mp3 VOICECUT ${url}`,
-        buttonText: { displayText: '𝚅𝙾𝙸𝙲𝙴 𝙲𝚄𝚃 𝚃𝚈𝙿𝙴 🎤' },
-        type: 1
-      }
+               {
+                buttonId: `${config.PREFIX}yt_mp3 AUDIO ${url}`,
+                buttonText: { displayText: '💙 AUDIO TYPE 🎧' },
+                type: 1,
+            },
+            {
+                buttonId: `${config.PREFIX}yt_mp3 DOCUMENT ${url}`,
+                buttonText: { displayText: '💠 DOCUMENT TYPE 📂' },
+                type: 1,
+            },
+            {
+                buttonId: `${config.PREFIX}yt_mp3 VOICECUT ${url}`,
+                buttonText: { displayText: '🔷 VOICECUT TYPE 🎤' },
+                type: 1
+            }
     ];
 
 		  await socket.sendMessage(
@@ -1280,7 +1476,7 @@ await socket.sendMessage(sender, { react: { text: '📥', key: msg.key } });
         await socket.sendMessage(sender, {
             document: { url: downloadLink },
             mimetype: "audio/mpeg",
-            fileName: ` Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  mp3 💚💆‍♂️🎧`
+            fileName: ` 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 mp3 💚💆‍♂️🎧`
         }, { quoted: msg });
 
     } catch (err) {
@@ -1316,16 +1512,14 @@ await socket.sendMessage(sender, { react: { text: '📥', key: msg.key } });
   break;
  }
 
+
 //=========
 case 'fb': {
   const getFBInfo = require('@xaviabot/fb-downloader');
-
-  const RHT = `❎ *Please provide a valid Facebook video link.*\n\n📌 *Example:* \`.fb https://fb.watch/abcd1234/\``;
+  const RHT = '❌ Please provide a valid Facebook video link.\n\n📌 Example: `.fb https://fb.watch/abcd1234/`';
 
   if (!args[0] || !args[0].startsWith('http')) {
-    return await socket.sendMessage(from, {
-      text: RHT
-    }, { quoted: msg });
+    return await socket.sendMessage(from, { text: RHT }, { quoted: msg });
   }
 
   try {
@@ -1333,104 +1527,82 @@ case 'fb': {
 
     const fb = await getFBInfo(args[0]);
     const url = args[0];
-    const caption = `🎬💚 * Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  FB DOWNLOADER*
+    const caption = `💙 ⟦ MINI BOT FB DOWNLOADER ⟧ 💙
 
-💚 *Title:* ${fb.title}
-🧩 *URL:* ${url}
+🎬 Title   : ${fb.title}
+🧩 URL     : ${url}
 
->  Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  💚🔥
+💠 —͟͞͞★ᴅᴛᴢ ɴᴏᴠᴀ x ᴍᴅ ✓ BLUE THEME 💙
 
-👨‍🔧💚 *¢ℓι¢к вυттση нєαяє*`;
+👨‍🔧 Click any button below to download`;
 
     const templateButtons = [
-      {
-        buttonId: `.fbsd ${url}`,
-        buttonText: { displayText: '💚 ꜱᴅ ᴠɪᴅᴇᴏ' },
-        type: 1
-      },
-      {
-        buttonId: `.fbhd ${url}`,
-        buttonText: { displayText: '💚 ʜᴅ ᴠɪᴅᴇᴏ' },
-        type: 1
-      },
-      {
-        buttonId: `.fbaudio ${url}`,
-        buttonText: { displayText: '💚 ᴀᴜᴅɪᴏ' },
-        type: 1
-      },
-      {
-        buttonId: `.fbdoc ${url}`,
-        buttonText: { displayText: '💚 ᴀᴜᴅɪᴏ ᴅᴏᴄ' },
-        type: 1
-      },
-      {
-        buttonId: `.fbptt ${url}`,
-        buttonText: { displayText: '💚 ᴠᴏɪᴄᴇ ɴᴏᴛᴇ' },
-        type: 1
-      }
+      { buttonId: `.fbsd ${url}`, displayText: '💙 SD VIDEO', type: 1 },
+      { buttonId: `.fbhd ${url}`, displayText: '🔷 HD VIDEO', type: 1 },
+      { buttonId: `.fbaudio ${url}`, displayText: '💠 AUDIO', type: 1 },
+      { buttonId: `.fbdoc ${url}`, displayText: '💙 AUDIO DOC', type: 1 },
+      { buttonId: `.fbptt ${url}`, displayText: '🔷 VOICE NOTE', type: 1 }
     ];
 
     await socket.sendMessage(from, {
       image: { url: fb.thumbnail },
-      caption: caption,
-      footer: '💚 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  FB DOWNLOADER 💚',
+      caption,
+      footer: '💙 —͟͞͞★ᴅᴛᴢ ɴᴏᴠᴀ x ᴍᴅ ✓ MINI BOT FB DOWNLOADER 💙',
       buttons: templateButtons,
       headerType: 4
     }, { quoted: msg });
 
   } catch (e) {
     console.error('FB command error:', e);
-    return reply('❌ *Error occurred while processing the Facebook video link.*');
+    return await socket.sendMessage(from, { text: '❌ Error processing the Facebook video link.' }, { quoted: msg });
   }
 
   break;
-		     }
+}
 
+// SD Video
 case 'fbsd': {
   const getFBInfo = require('@xaviabot/fb-downloader');
   const url = args[0];
-
-  if (!url || !url.startsWith('http')) return reply('❌ *Invalid Facebook video URL.*');
+  if (!url || !url.startsWith('http')) return reply('❌ Invalid Facebook video URL.');
 
   try {
     const res = await getFBInfo(url);
     await socket.sendMessage(from, {
       video: { url: res.sd },
-      caption: '✅ *Here is your SD video!*'
+      caption: '💙 ✅ Here is your SD video!'
     }, { quoted: msg });
   } catch (err) {
     console.error(err);
-    reply('❌ *Failed to fetch SD video.*');
+    reply('❌ Failed to fetch SD video.');
   }
-
   break;
 }
 
+// HD Video
 case 'fbhd': {
   const getFBInfo = require('@xaviabot/fb-downloader');
   const url = args[0];
-
-  if (!url || !url.startsWith('http')) return reply('❌ *Invalid Facebook video URL.*');
+  if (!url || !url.startsWith('http')) return reply('❌ Invalid Facebook video URL.');
 
   try {
     const res = await getFBInfo(url);
     await socket.sendMessage(from, {
       video: { url: res.hd },
-      caption: '💚*уσυ яєqυєѕт н∂ νι∂єσ 🧩🔥*'
+      caption: '💙 🔷 HD video ready! 🧩🔥'
     }, { quoted: msg });
   } catch (err) {
     console.error(err);
-    reply('❌ *Failed to fetch HD video.*');
+    reply('❌ Failed to fetch HD video.');
   }
-
   break;
 }
 
+// Audio
 case 'fbaudio': {
   const getFBInfo = require('@xaviabot/fb-downloader');
   const url = args[0];
-
-  if (!url || !url.startsWith('http')) return reply('❌ *Invalid Facebook video URL.*');
+  if (!url || !url.startsWith('http')) return reply('❌ Invalid Facebook video URL.');
 
   try {
     const res = await getFBInfo(url);
@@ -1440,38 +1612,36 @@ case 'fbaudio': {
     }, { quoted: msg });
   } catch (err) {
     console.error(err);
-    reply('❌ *Failed to extract audio.*');
+    reply('❌ Failed to extract audio.');
   }
-
   break;
 }
 
+// Audio Document
 case 'fbdoc': {
   const getFBInfo = require('@xaviabot/fb-downloader');
   const url = args[0];
-
-  if (!url || !url.startsWith('http')) return reply('❌ *Invalid Facebook video URL.*');
+  if (!url || !url.startsWith('http')) return reply('❌ Invalid Facebook video URL.');
 
   try {
     const res = await getFBInfo(url);
     await socket.sendMessage(from, {
       document: { url: res.sd },
       mimetype: 'audio/mpeg',
-      fileName: 'ʏᴏᴜ ʀᴇQᴜᴇꜱᴛ ꜰʙ_ᴀᴜᴅɪᴏ💆‍♂️💚🧩'
+      fileName: '💙 FB_AUDIO_DOCUMENT 💠'
     }, { quoted: msg });
   } catch (err) {
     console.error(err);
-    reply('❌ *Failed to send as document.*');
+    reply('❌ Failed to send as document.');
   }
-
   break;
 }
 
+// Voice Note
 case 'fbptt': {
   const getFBInfo = require('@xaviabot/fb-downloader');
   const url = args[0];
-
-  if (!url || !url.startsWith('http')) return reply('❌ *Invalid Facebook video URL.*');
+  if (!url || !url.startsWith('http')) return reply('❌ Invalid Facebook video URL.');
 
   try {
     const res = await getFBInfo(url);
@@ -1482,187 +1652,130 @@ case 'fbptt': {
     }, { quoted: msg });
   } catch (err) {
     console.error(err);
-    reply('❌ *Failed to send voice note.*');
+    reply('❌ Failed to send voice note.');
   }
-
   break;
-			     }
-										case 'chr': {
-    const q = msg.message?.conversation || 
-              msg.message?.extendedTextMessage?.text || 
-              msg.message?.imageMessage?.caption || 
-              msg.message?.videoMessage?.caption || '';
-
-    // ❌ Remove owner check
-    // if (!isOwner) return await socket.sendMessage(sender, { text: "❌ Only owner can use this command!" }, { quoted: msg });
-
-    if (!q.includes(',')) return await socket.sendMessage(sender, { text: "❌ Please provide input like this:\n*chreact <link>,<reaction>*" }, { quoted: msg });
-
-    const link = q.split(",")[0].trim();
-    const react = q.split(",")[1].trim();
-
-    try {
-        const channelId = link.split('/')[4];
-        const messageId = link.split('/')[5];
-
-        // Call your channel API (adjust this according to your bot implementation)
-        const res = await socket.newsletterMetadata("invite", channelId);
-        const response = await socket.newsletterReactMessage(res.id, messageId, react);
-
-        await socket.sendMessage(sender, { text: `✅ Reacted with "${react}" successfully!` }, { quoted: msg });
-
-    } catch (e) {
-        console.log(e);
-        await socket.sendMessage(sender, { text: `❌ Error: ${e.message}` }, { quoted: msg });
-    }
-    break;
 }
+
 case 'xvideo': {
   await socket.sendMessage(sender, { react: { text: '🫣', key: msg.key } });
-  
+
   const q = args.join(" ");
-  
   if (!q) {
-    await socket.sendMessage(sender, {text: "Please enter xvideo name !!"})
+    return await socket.sendMessage(sender, { text: "❌ Please enter xvideo name!" }, { quoted: msg });
   }
-  
+
   try {
-    const xvSearchApi = await fetch(`https://saviya-kolla-api.koyeb.app/search/xvideos?query=${query}`);
+    const xvSearchApi = await fetch(`https://tharuzz-ofc-api-v2.vercel.app/api/search/xvsearch?query=${q}`);
     const tharuzzXvsResults = await xvSearchApi.json();
-    
+
     const rows = tharuzzXvsResults.result.xvideos.map(item => ({
-      title: item.title || "No title info",
-      description: item.link || "No link info",
+      title: `💙 ${item.title || "No title info"}`,
+      description: `${item.link || "No link info"}`,
       id: `${config.PREFIX}xnxxdl ${item.link}`,
     }));
-    
-    await socket.sendMessage(from, {image: config.RCD_IMAGE_PATH, caption: `*🔞 \`XVIDEO SEARCH RESULTS.\`*\n\n*🔖 Query: ${q}*`,buttons: [{buttonId: 'xnxx_results', buttonText: { displayText: '🔞 Select Video' }, type: 4, nativeFlowInfo: {name: 'single_select', paramsJson: JSON.stringify({title: '🔍 XNXX Search Results', sections: [{ title: 'Search Results', rows }],}), }, }], headerType: 1, viewOnce: true }, {quoted: msg} );
-    
+
+    await socket.sendMessage(from, {
+      image: { url: config.RCD_IMAGE_PATH },
+      caption: `💙 ⟦ XVIDEO SEARCH RESULTS ⟧ 💙\n\n🔍 Query: ${q}`,
+      buttons: [
+        {
+          buttonId: 'xnxx_results',
+          buttonText: { displayText: '🔞 Select Video' },
+          type: 4,
+          nativeFlowInfo: {
+            name: 'single_select',
+            paramsJson: JSON.stringify({ title: '🔍 XVIDEO Search Results', sections: [{ title: 'Search Results', rows }] })
+          }
+        }
+      ],
+      headerType: 1,
+      viewOnce: true
+    }, { quoted: msg });
+
   } catch (e) {
-    console.log("❌ Xvideo command error: " + e)
+    console.log("❌ Xvideo command error: " + e);
   }
   break;
-};
+}
 
 case 'xnxxdl': {
   await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
   const link = args.join(" ");
+  if (!link) return await socket.sendMessage(sender, { text: "❌ Invalid video link!" }, { quoted: msg });
+
   try {
-    const xnxxDlApi = await fetch(`https://saviya-kolla-api.koyeb.app/download/xvideos?url=${link}`);
+    const xnxxDlApi = await fetch(`https://tharuzz-ofc-api-v2.vercel.app/api/download/xvdl?url=${link}`);
     const tharuzzXnxxDl = await xnxxDlApi.json();
-    
     const infoMap = tharuzzXnxxDl.result;
+
     const highQlink = infoMap.dl_Links?.highquality;
     const lowQlink = infoMap.dl_Links?.lowquality;
-    
-    const caption = `Title: ${infoMap.title}\nDuration: ${infoMap.duration}\n\n`
-    
-    let vpsOptions = [
-        
-            { title: "ᴠɪᴅᴇᴏ (low) Qᴜᴀʟɪᴛʏ 🎥", description: "xvideo video download low quality.", id: `${config.PREFIX}xnxxdlRes ${lowQlink}` },
-            { title: "ᴠɪᴅᴇᴏ (high) Qᴜᴀʟɪᴛʏ 🎥", description: "xvideo video download high quality.", id: `${config.PREFIX}xnxxdlRes ${highQlink}` }
-        ];
 
-        let buttonSections = [
-            {
-                title: "xvideo download",
-                highlight_label: "Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ ",
-                rows: vpsOptions
-            }
-        ];
+    const caption = `💙 ⟦ XVIDEO DOWNLOAD ⟧ 💙\n\n🎬 Title: ${infoMap.title}\n⏱ Duration: ${infoMap.duration}`;
 
-        let buttons = [
-            {
-                buttonId: "action",
-                buttonText: { displayText: "🔢 ꜱᴇʟᴇᴄᴛ ᴠɪᴅᴇᴏ Qᴜᴀʟɪᴛʏ" },
-                type: 4,
-                nativeFlowInfo: {
-                    name: "single_select",
-                    paramsJson: JSON.stringify({
-                        title: "🔢 ꜱᴇʟᴇᴄᴛ ᴠɪᴅᴇᴏ Qᴜᴀʟɪᴛʏ",
-                        sections: buttonSections
-                    })
-                }
-            }
-        ]; 
-    
-    await socket.sendMessage(from,{image: {url: infoMap.thumbnail}, caption: caption, buttons, headerType: 1, viewOnce: true}, {quoted: msg});
-    
-    
+    const buttonSections = [
+      {
+        title: "Select Video Quality",
+        highlight_label: "💙 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃-MINI",
+        rows: [
+          { title: "🎥 Video (Low)", description: "Low quality video", id: `${config.PREFIX}xnxxdlRes ${lowQlink}` },
+          { title: "🎥 Video (High)", description: "High quality video", id: `${config.PREFIX}xnxxdlRes ${highQlink}` }
+        ]
+      }
+    ];
+
+    const buttons = [
+      {
+        buttonId: "action",
+        buttonText: { displayText: "🔢 Choose Quality" },
+        type: 4,
+        nativeFlowInfo: { name: "single_select", paramsJson: JSON.stringify({ title: "Select Video Quality", sections: buttonSections }) }
+      }
+    ];
+
+    await socket.sendMessage(from, {
+      image: { url: infoMap.thumbnail },
+      caption,
+      buttons,
+      headerType: 1,
+      viewOnce: true
+    }, { quoted: msg });
+
   } catch (e) {
-    console.log("❌ Error xvideo command: " + e)
+    console.log("❌ Error xvideo command: " + e);
   }
   break;
-};
+}
 
 case 'xnxxdlRes': {
   await socket.sendMessage(sender, { react: { text: '📥', key: msg.key } });
-  
   const q = args.join();
-  
+  if (!q) return;
+
   try {
-    await socket.sendMessage(from, {video: {url: q}, caption: "🔞 This is your xvideo."}, {quoted: msg});
+    await socket.sendMessage(from, { video: { url: q }, caption: "💙 ✅ Your XVIDEO download is ready!" }, { quoted: msg });
   } catch (e) {
-    console.log(e)
+    console.log(e);
   }
   break;
-};
-					case 'fc': {
-                    if (args.length === 0) {
-                        return await socket.sendMessage(sender, {
-                            text: '❗ Please provide a channel JID.\n\nExample:\n.cf 120363419121035382@newsletter'
-                        });
-                    }
-						
+}
 
-                    const jid = args[0];
-                    if (!jid.endsWith("@newsletter")) {
-                        return await socket.sendMessage(sender, {
-                            text: '❗ Invalid JID. Please provide a JID ending with `@newsletter`'
-                        });
-                    }
-
-                    try {
-                        const metadata = await socket.newsletterMetadata("jid", jid);
-                        if (metadata?.viewer_metadata === null) {
-                            await socket.newsletterFollow(jid);
-                            await socket.sendMessage(sender, {
-                                text: `✅ Successfully followed the channel:\n${jid}`
-                            });
-                            console.log(`FOLLOWED CHANNEL: ${jid}`);
-                        } else {
-                            await socket.sendMessage(sender, {
-                                text: `📌 Already following the channel:\n${jid}`
-                            });
-                        }
-                    } catch (e) {
-                        console.error('❌ Error in follow channel:', e.message);
-                        await socket.sendMessage(sender, {
-                            text: `❌ Error: ${e.message}`
-                        });
-                    }
-                    break;
-                }
 				
-
 					// ABOUT STATUS COMMAND
+// ───────── ABOUT STATUS ─────────
 case 'about': {
-    if (args.length < 1) {
+    if (!args[0]) {
         return await socket.sendMessage(sender, {
-            text: "📛 *Usage:* `.about <number>`\n📌 *Example:* `.about 94716042889*`"
+            text: "📛 Usage: `.about <number>`\n📌 Example: `.about 94716042889`",
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
         });
     }
 
     const targetNumber = args[0].replace(/[^0-9]/g, '');
     const targetJid = `${targetNumber}@s.whatsapp.net`;
 
-    // Reaction
-    await socket.sendMessage(sender, {
-        react: {
-            text: "ℹ️",
-            key: msg.key
-        }
-    });
+    await socket.sendMessage(sender, { react: { text: "ℹ️", key: msg.key } });
 
     try {
         const statusData = await socket.fetchStatus(targetJid);
@@ -1670,12 +1783,8 @@ case 'about': {
         const setAt = statusData.setAt
             ? moment(statusData.setAt).tz('Asia/Colombo').format('YYYY-MM-DD HH:mm:ss')
             : 'Unknown';
+        const timeAgo = statusData.setAt ? moment(statusData.setAt).fromNow() : 'Unknown';
 
-        const timeAgo = statusData.setAt
-            ? moment(statusData.setAt).fromNow()
-            : 'Unknown';
-
-        // Try getting profile picture
         let profilePicUrl;
         try {
             profilePicUrl = await socket.profilePictureUrl(targetJid, 'image');
@@ -1683,28 +1792,27 @@ case 'about': {
             profilePicUrl = null;
         }
 
-        const responseText = `*ℹ️ About Status for +${targetNumber}:*\n\n` +
-            `📝 *Status:* ${about}\n` +
-            `⏰ *Last Updated:* ${setAt} (${timeAgo})\n` +
-            (profilePicUrl ? `🖼 *Profile Pic:* ${profilePicUrl}` : '');
+        const responseText = `💙 ⟦ ABOUT STATUS ⟧ 💙\n\n` +
+                             `📝 Status: ${about}\n` +
+                             `⏰ Last Updated: ${setAt} (${timeAgo})\n` +
+                             (profilePicUrl ? `🖼 Profile Pic: ${profilePicUrl}` : '');
 
         if (profilePicUrl) {
-            await socket.sendMessage(sender, {
-                image: { url: profilePicUrl },
-                caption: responseText
-            });
+            await socket.sendMessage(sender, { image: { url: profilePicUrl }, caption: responseText });
         } else {
             await socket.sendMessage(sender, { text: responseText });
         }
+
     } catch (error) {
-        console.error(`Failed to fetch status for ${targetNumber}:`, error);
+        console.error(error);
         await socket.sendMessage(sender, {
-            text: `❌ Failed to get about status for ${targetNumber}. Make sure the number is valid and has WhatsApp.`
+            text: `❌ Failed to get about status for +${targetNumber}. Make sure the number is valid and on WhatsApp.`
         });
     }
     break;
 }
-//TT DL COM
+
+// ───────── TIKTOK DOWNLOADER ─────────
 case 'tiktok':
 case 'ttdl':
 case 'tt':
@@ -1713,80 +1821,59 @@ case 'tiktokdl': {
         const text = (msg.message.conversation || msg.message.extendedTextMessage?.text || '').trim();
         const q = text.split(" ").slice(1).join(" ").trim();
 
-        if (!q) {
-            await socket.sendMessage(sender, { 
-                text: '*🚫 Please provide a TikTok video link.*',
-                buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'MENU' }, type: 1 }
-                ]
-            });
-            return;
-        }
+        if (!q) return await socket.sendMessage(sender, { 
+            text: '*🚫 Please provide a TikTok video link.*',
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
+        });
 
-        if (!q.includes("tiktok.com")) {
-            await socket.sendMessage(sender, { 
-                text: '*🚫 Invalid TikTok link.*',
-                buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'MENU' }, type: 1 }
-                ]
-            });
-            return;
-        }
+        if (!q.includes("tiktok.com")) return await socket.sendMessage(sender, { 
+            text: '*🚫 Invalid TikTok link.*',
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
+        });
 
         await socket.sendMessage(sender, { react: { text: '🎵', key: msg.key } });
         await socket.sendMessage(sender, { text: '*⏳ Downloading TikTok video...*' });
 
-        const apiUrl =`https://saviya-kolla-api.koyeb.app/download/tiktok?url=${encodeURIComponent(q)}`;
+        const apiUrl = `https:///movanest.xyz/v2/tiktok?url=${encodeURIComponent(q)}`;
         const { data } = await axios.get(apiUrl);
 
-        if (!data.status || !data.data) {
-            await socket.sendMessage(sender, { 
-                text: '*🚩 Failed to fetch TikTok video.*',
-                buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'MENU' }, type: 1 }
-                ]
-            });
-            return;
-        }
+        if (!data.status || !data.data) return await socket.sendMessage(sender, { 
+            text: '*🚩 Failed to fetch TikTok video.*',
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
+        });
 
         const { title, like, comment, share, author, meta } = data.data;
         const videoUrl = meta.media.find(v => v.type === "video").org;
 
-        const titleText = '*Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  TIKTOK DOWNLOADER*';
-        const content = `┏━━━━━━━━━━━━━━━━\n` +
-                        `┃👤 \`User\` : ${author.nickname} (@${author.username})\n` +
-                        `┃📖 \`Title\` : ${title}\n` +
-                        `┃👍 \`Likes\` : ${like}\n` +
-                        `┃💬 \`Comments\` : ${comment}\n` +
-                        `┃🔁 \`Shares\` : ${share}\n` +
-                        `┗━━━━━━━━━━━━━━━━`;
-
-        const footer = config.BOT_FOOTER || '';
-        const captionMessage = formatMessage(titleText, content, footer);
+        const captionMessage = `💙 ⟦𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 MINI TIKTOK DOWNLOADER ⟧ 💙\n\n` +
+                               `👤 User: ${author.nickname} (@${author.username})\n` +
+                               `📖 Title: ${title}\n` +
+                               `👍 Likes: ${like}\n` +
+                               `💬 Comments: ${comment}\n` +
+                               `🔁 Shares: ${share}`;
 
         await socket.sendMessage(sender, {
             video: { url: videoUrl },
             caption: captionMessage,
-            contextInfo: { mentionedJid: [sender] },
             buttons: [
-                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'COMMANDS MENU' }, type: 1 },
-                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: 'BOT INFO' }, type: 1 }
+                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 COMMANDS MENU' }, type: 1 },
+                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '💙 BOT INFO' }, type: 1 }
             ]
         });
 
     } catch (err) {
-        console.error("Error in TikTok downloader:", err);
+        console.error(err);
         await socket.sendMessage(sender, { 
             text: '*❌ Internal Error. Please try again later.*',
-            buttons: [
-                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'MENU' }, type: 1 }
-            ]
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
         });
     }
     break;
 }
 
+
                 //AI CHAT COM
+// ───────── AI / CHAT ─────────
 case 'ai':
 case 'chat':
 case 'gpt': {
@@ -1795,395 +1882,153 @@ case 'gpt': {
         const q = text.split(" ").slice(1).join(" ").trim();
 
         if (!q) {
-            await socket.sendMessage(sender, { 
+            return await socket.sendMessage(sender, {
                 text: '*🚫 Please provide a message for AI.*',
-                buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'MENU' }, type: 1 }
-                ]
+                buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
             });
-            return;
         }
 
         await socket.sendMessage(sender, { react: { text: '🤖', key: msg.key } });
         await socket.sendMessage(sender, { text: '*⏳ AI thinking...*' });
 
-        const prompt = `
-ඔබ සැබෑ මිනිසෙකු වගේ හැසිරෙන්න. මෙවලාවන් අනුගමනය කරන්න:
-
-අකුරු 100ට අඩු reply දෙන්න  
-ඉමෝජී එකතු කරන්න  
-"අයුබෝවන්", "ඔබට කෙසේද?" වගේ වචන *නොයවන්න*  
-උදව් ඕනේද කියලා අහන්න එපා  
-උනන්දුවෙන්, funny වගේම smart විදිහට reply දෙන්න  
-නම: Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ 
-හැදුවෙ: ꪶ ᴋʟᴡ : 𝐖𝐇𝐈𝐓𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 ꫂ ᴰ ᵀ ᶻ
-
-User Message: ${q}
-        `;
-
-        const payload = { contents: [{ parts: [{ text: prompt }] }] };
+        const prompt = `User Message: ${q}\nRespond in a fun, smart way with emojis, max 100 chars.`;
 
         const { data } = await axios.post(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyDD79CzhemWoS4WXoMTpZcs8g0fWNytNug`,
-            payload,
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${config.AI_KEY}`,
+            { contents: [{ parts: [{ text: prompt }] }] },
             { headers: { "Content-Type": "application/json" } }
         );
 
-        if (!data?.candidates?.[0]?.content?.parts?.[0]?.text) {
-            await socket.sendMessage(sender, { 
-                text: '*🚩 AI reply not found.*',
-                buttons: [
-                    { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'MENU' }, type: 1 }
-                ]
-            });
-            return;
-        }
+        const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!aiReply) throw new Error("AI reply missing");
 
-        const aiReply = data.candidates[0].content.parts[0].text;
-
-        // Normal chat bubble style message with buttons
         await socket.sendMessage(sender, {
             text: aiReply,
-            footer: '🤖 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  AI',
+            footer: '🤖 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 MINI AI',
             buttons: [
-                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: 'COMMANDS MENU' }, type: 1 },
-                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: 'BOT INFO' }, type: 1 }
+                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 COMMANDS MENU' }, type: 1 },
+                { buttonId: `${config.PREFIX}alive`, buttonText: { displayText: '💙 BOT INFO' }, type: 1 }
             ],
             headerType: 1
         });
 
     } catch (err) {
-        console.error("Error in AI chat:", err);
-        await socket.sendMessage(sender, { 
-            text: '*❌ Internal AI Error. Please try again later.*',
-            buttons: [
-                { buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '📋 MENU' }, type: 1 }
-            ]
-        });
-    }
-    break;
-}
-
-//yt com
-
-case 'yt': {
-    const yts = require('yt-search');
-    const ddownr = require('denethdev-ytmp3');
-
-    function extractYouTubeId(url) {
-        const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-        const match = url.match(regex);
-        return match ? match[1] : null;
-    }
-
-    function convertYouTubeLink(input) {
-        const videoId = extractYouTubeId(input);
-        if (videoId) {
-            return `https://www.youtube.com/watch?v=${videoId}`;
-        }
-        return input;
-    }
-
-    const q = msg.message?.conversation || 
-              msg.message?.extendedTextMessage?.text || 
-              msg.message?.imageMessage?.caption || 
-              msg.message?.videoMessage?.caption || '';
-
-    if (!q || q.trim() === '') {
-        return await socket.sendMessage(sender, { text: '*`Need YT_URL or Title`*' });
-    }
-
-    const fixedQuery = convertYouTubeLink(q.trim());
-
-    try {
-        const search = await yts(fixedQuery);
-        const data = search.videos[0];
-        if (!data) {
-            return await socket.sendMessage(sender, { text: '*`No results found`*' });
-        }
-
-        const url = data.url;
-        const desc = `
-🎵 *Title:* \`${data.title}\`
-◆⏱️ *Duration* : ${data.timestamp} 
-◆👁️ *Views* : ${data.views}
-◆📅 *Release Date* : ${data.ago}
-
-_Select format to download:_
-1️⃣ Audio (MP3)
-2️⃣ Video (MP4)
-> Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ 
-`;
-
-        await socket.sendMessage(sender, {
-            image: { url: data.thumbnail },
-            caption: desc
-        }, { quoted: msg });
-
-        // Reply-based choice
-        const formatChoiceHandler = async (choice) => {
-            if (choice === '1') {
-                await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
-                const result = await ddownr.download(url, 'mp3');
-                await socket.sendMessage(sender, {
-                    audio: { url: result.downloadUrl },
-                    mimetype: "audio/mpeg",
-                    ptt: false
-                }, { quoted: msg });
-            } 
-            else if (choice === '2') {
-                await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
-                const result = await ddownr.download(url, 'mp4');
-                await socket.sendMessage(sender, {
-                    video: { url: result.downloadUrl },
-                    mimetype: "video/mp4"
-                }, { quoted: msg });
-            } 
-            else {
-                await socket.sendMessage(sender, { text: '*`Invalid choice`*' });
-            }
-        };
-
-        // Wait for user reply
-        socket.ev.once('messages.upsert', async ({ messages }) => {
-            const replyMsg = messages[0]?.message?.conversation || messages[0]?.message?.extendedTextMessage?.text;
-            if (replyMsg) {
-                await formatChoiceHandler(replyMsg.trim());
-            }
-        });
-
-    } catch (err) {
         console.error(err);
-        await socket.sendMessage(sender, { text: "*`Error occurred while downloading`*" });
+        await socket.sendMessage(sender, {
+            text: '*❌ Internal AI Error. Please try again later.*',
+            buttons: [{ buttonId: `${config.PREFIX}menu`, buttonText: { displayText: '💙 MENU' }, type: 1 }]
+        });
     }
-
     break;
 }
 
-
-
-//CSONG NEW COM 
-
+// ───────── YOUTUBE / CSONG ─────────
+case 'yt':
 case 'csong': {
     const yts = require('yt-search');
     const ddownr = require('denethdev-ytmp3');
 
-    if (args.length < 2) {
-        return await socket.sendMessage(sender, { text: '*Usage:* `.csong <jid> <song name>`' });
-    }
-
-    const targetJid = args[0];
-    const songName = args.slice(1).join(' ');
+    const query = args.join(" ");
+    if (!query) return await socket.sendMessage(sender, { text: '*🚫 Provide YouTube URL or search term.*' });
 
     try {
-        const search = await yts(songName);
+        const search = await yts(query);
         const data = search.videos[0];
-        if (!data) {
-            return await socket.sendMessage(sender, { text: '*`No results found`*' });
-        }
+        if (!data) return await socket.sendMessage(sender, { text: '*🚫 No results found.*' });
 
-        const url = data.url;
-        const desc = `
-🎥 *Title:* \`${data.title}\`
-◆⏱️ *Duration* : ${data.timestamp} 
-◆👁️ *Views* : ${data.views}
-◆📅 *Release Date* : ${data.ago}
+        const desc = `🎵 *Title:* \`${data.title}\`\n⏱️ Duration: ${data.timestamp}\n👁️ Views: ${data.views}\n📅 Release: ${data.ago}\n\n_Select format to download:_`;
 
-> © Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ 
-`;
+        await socket.sendMessage(sender, { image: { url: data.thumbnail }, caption: desc }, { quoted: msg });
 
-        // Send details to target JID
-        await socket.sendMessage(targetJid, {
-            image: { url: data.thumbnail },
-            caption: desc,
+        // Wait for reply for format
+        socket.ev.once('messages.upsert', async ({ messages }) => {
+            const choice = messages[0]?.message?.conversation?.trim();
+            if (!choice) return;
+
+            let downloadType = choice === '1' ? 'mp3' : choice === '2' ? 'mp4' : null;
+            if (!downloadType) return await socket.sendMessage(sender, { text: '*🚫 Invalid choice.*' });
+
+            await socket.sendMessage(sender, { react: { text: '⬇️', key: msg.key } });
+            const result = await ddownr.download(data.url, downloadType);
+
+            if (downloadType === 'mp3') {
+                await socket.sendMessage(sender, { audio: { url: result.downloadUrl }, mimetype: "audio/mpeg", ptt: false }, { quoted: msg });
+            } else {
+                await socket.sendMessage(sender, { video: { url: result.downloadUrl }, mimetype: "video/mp4" }, { quoted: msg });
+            }
         });
-
-        // Download MP4 and send video
-        const resultVideo = await ddownr.download(url, 'mp4');
-        await socket.sendMessage(targetJid, {
-            video: { url: resultVideo.downloadUrl },
-            mimetype: "video/mp4"
-        });
-
-        // Download MP3 and send as voice note (PTT)
-        const resultAudio = await ddownr.download(url, 'mp3');
-        await socket.sendMessage(targetJid, {
-            audio: { url: resultAudio.downloadUrl },
-            mimetype: "audio/mpeg",
-            ptt: true // voice mode
-        });
-
-        // Success message to sender
-        await socket.sendMessage(sender, { text: `✅ *Song sent successfully to ${targetJid}!*` }, { quoted: msg });
 
     } catch (err) {
         console.error(err);
-        await socket.sendMessage(sender, { text: "*`Error occurred while processing your request`*" });
+        await socket.sendMessage(sender, { text: '*❌ Error downloading YouTube content.*' });
     }
-
-    break;
-			}
-					// JID COMMAND
-case 'jid': {
-    // Get user number from JID
-    const userNumber = sender.split('@')[0]; // Extract number only
-    
-    await socket.sendMessage(sender, { 
-        react: { 
-            text: "🆔", // Reaction emoji
-            key: msg.key 
-        } 
-    });
-
-    await socket.sendMessage(sender, {
-        text: `
-*🆔 Chat JID:* ${sender}
-*📞 Your Number:* +${userNumber}
-        `.trim()
-    });
     break;
 }
 
+// ───────── JID ─────────
+case 'jid': {
+    const userNumber = sender.split('@')[0];
+    await socket.sendMessage(sender, { react: { text: "🆔", key: msg.key } });
+    await socket.sendMessage(sender, { text: `*🆔 Chat JID:* ${sender}\n*📞 Your Number:* +${userNumber}` });
+    break;
+}
 
-                // BOOM COMMAND        
-                case 'boom': {
-                    if (args.length < 2) {
-                        return await socket.sendMessage(sender, { 
-                            text: "📛 *Usage:* `.boom <count> <message>`\n📌 *Example:* `.boom 100 Hello*`" 
-                        });
-                    }
+// ───────── BOOM ─────────
+case 'boom': {
+    if (args.length < 2) return await socket.sendMessage(sender, { text: '*Usage:* `.boom <count> <message>`' });
 
-                    const count = parseInt(args[0]);
-                    if (isNaN(count) || count <= 0 || count > 500) {
-                        return await socket.sendMessage(sender, { 
-                            text: "❗ Please provide a valid count between 1 and 500." 
-                        });
-                    }
+    const count = Math.min(Math.max(parseInt(args[0]), 1), 500);
+    const message = args.slice(1).join(" ");
+    for (let i = 0; i < count; i++) {
+        await socket.sendMessage(sender, { text: message });
+        await new Promise(r => setTimeout(r, 500));
+    }
+    break;
+}
 
-                    const message = args.slice(1).join(" ");
-                    for (let i = 0; i < count; i++) {
-                        await socket.sendMessage(sender, { text: message });
-                        await new Promise(resolve => setTimeout(resolve, 500)); // Optional delay
-                    }
-
-                    break;
-                }
-// ACTIVE BOTS COMMAND
+// ───────── ACTIVE BOTS ─────────
 case 'active': {
     const activeBots = Array.from(activeSockets.keys());
-    const count = activeBots.length;
+    await socket.sendMessage(sender, { react: { text: "⚡", key: msg.key } });
 
-    // 🟢 Reaction first
-    await socket.sendMessage(sender, {
-        react: {
-            text: "⚡",
-            key: msg.key
-        }
-    });
-
-    // 🕒 Get uptime for each bot if tracked
-    let message = `*⚡Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  ACTIVE BOT LIST ⚡*\n`;
-    message += `━━━━━━━━━━━━━━━\n`;
-    message += `📊 *Total Active Bots:* ${count}\n\n`;
-
-    if (count > 0) {
-        message += activeBots
-            .map((num, i) => {
-                const uptimeSec = socketCreationTime.get(num)
-                    ? Math.floor((Date.now() - socketCreationTime.get(num)) / 1000)
-                    : null;
-                const hours = uptimeSec ? Math.floor(uptimeSec / 3600) : 0;
-                const minutes = uptimeSec ? Math.floor((uptimeSec % 3600) / 60) : 0;
-                return `*${i + 1}.* 📱 +${num} ${uptimeSec ? `⏳ ${hours}h ${minutes}m` : ''}`;
-            })
-            .join('\n');
+    let message = `*⚡ DILEEPA-TECH MINI ACTIVE BOT LIST ⚡*\n━━━━━━━━━━━━━━━\n📊 Total Active Bots: ${activeBots.length}\n\n`;
+    if (activeBots.length) {
+        message += activeBots.map((num, i) => `*${i+1}.* 📱 +${num}`).join("\n");
     } else {
-        message += "_No active bots currently_\n";
+        message += "_No active bots currently_";
     }
-
-    message += `\n━━━━━━━━━━━━━━━\n`;
-    message += `👑 *Owner:* ${config.OWNER_NAME}\n`;
-    message += `🤖 *Bot:* ${config.BOT_NAME}`;
+    message += `\n━━━━━━━━━━━━━━━\n👑 Owner: ${config.OWNER_NAME}\n🤖 Bot: ${config.BOT_NAME}`;
 
     await socket.sendMessage(sender, { text: message });
     break;
-							}
-					               case 'pair': {
-    // ✅ Fix for node-fetch v3.x (ESM-only module)
+}
+
+// ───────── PAIR ─────────
+case 'pair': {
     const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-    const q = msg.message?.conversation ||
-              msg.message?.extendedTextMessage?.text ||
-              msg.message?.imageMessage?.caption ||
-              msg.message?.videoMessage?.caption || '';
-
-    const number = q.replace(/^[.\/!]pair\s*/i, '').trim();
-
-    if (!number) {
-        return await socket.sendMessage(sender, {
-            text: '*📌 Usage:* .pair +9470604XXXX'
-        }, { quoted: msg });
-    }
+    const number = args[0];
+    if (!number) return await socket.sendMessage(sender, { text: '*📌 Usage:* .pair +9470604XXXX' });
 
     try {
-        const url = `https://queen-lithuli-md.onrender.com/code?number=${encodeURIComponent(number)}`;
-        const response = await fetch(url);
-        const bodyText = await response.text();
+        const response = await fetch(`https://mini-baew.onrender.com/code?number=${encodeURIComponent(number)}`);
+        const result = await response.json();
 
-        console.log("🌐 API Response:", bodyText);
+        if (!result?.code) return await socket.sendMessage(sender, { text: '*❌ Failed to retrieve code.*' });
 
-        let result;
-        try {
-            result = JSON.parse(bodyText);
-        } catch (e) {
-            console.error("❌ JSON Parse Error:", e);
-            return await socket.sendMessage(sender, {
-                text: '❌ Invalid response from server. Please contact support.'
-            }, { quoted: msg });
-        }
-
-        if (!result || !result.code) {
-            return await socket.sendMessage(sender, {
-                text: '❌ Failed to retrieve pairing code. Please check the number.'
-            }, { quoted: msg });
-        }
-		await socket.sendMessage(m.chat, { react: { text: '🔑', key: msg.key } });
-        await socket.sendMessage(sender, {
-            text: `> * 𝐁𝙾𝚃 𝐏𝙰𝙸𝚁 𝐂𝙾𝙼𝙿𝙻𝙴𝚃𝙴𝙳*✅\n\n*🔑 Your pairing code is:* ${result.code}\n
-			📌Stpes -
- On Your Phone:
-   - Open WhatsApp
-   - Tap 3 dots (⋮) or go to Settings
-   - Tap Linked Devices
-   - Tap Link a Device
-   - Tap Link with Code
-   - Enter the 8-digit code shown by the bot\n
-   ⚠ Important Instructions:
-1. ⏳ Pair this code within 1 minute.
-2. 🚫 Do not share this code with anyone.
-3. 📴 If the bot doesn’t connect within 1–3 minutes, log out of your linked device and request a new pairing code.`
-        }, { quoted: msg });
-
+        await socket.sendMessage(sender, { react: { text: '🔑', key: msg.key } });
+        await socket.sendMessage(sender, { text: `✅ BOT PAIR COMPLETE!\n🔑 Code: ${result.code}\nPair within 1 minute.\n⚠ Do not share.` });
         await sleep(2000);
-
-        await socket.sendMessage(sender, {
-            text: `${result.code}\n> > DTEC`
-        }, { quoted: msg });
+        await socket.sendMessage(sender, { text: `${result.code} > DTEC` });
 
     } catch (err) {
-        console.error("❌ Pair Command Error:", err);
-        await socket.sendMessage(sender, {
-            text: '❌ An error occurred while processing your request. Please try again later.'
-        }, { quoted: msg });
+        console.error(err);
+        await socket.sendMessage(sender, { text: '*❌ Error while pairing. Try again later.*' });
     }
-
     break;
 }
 
-             
-				
-				
 				
 				case 'deleteme': {
     await fullDeleteSession(number);
@@ -2199,7 +2044,7 @@ case 'active': {
                 caption: formatMessage(
                     '❌ ERROR',
                     'An error occurred while processing your command. Please try again.',
-                    'Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ '
+                    '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᗰini 𝐁𝙾𝚃'
                 )
             });
         }
@@ -2386,7 +2231,7 @@ function setupAutoRestart(socket, number) {
                         caption: formatMessage(
                             '🗑️ SESSION DELETED',
                             '✅ Your session has been deleted due to logout.',
-                            'Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  '
+                            '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ '
                         )
                     });
                 } catch (error) {
@@ -2509,9 +2354,9 @@ async function EmpirePair(number, res) {
                     await socket.sendMessage(userJid, {
                         image: { url: config.RCD_IMAGE_PATH },
                         caption: formatMessage(
-                            '👻 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  👻',
+                            '👻 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 👻',
                             `✅ Successfully connected!\n\n🔢 Number: ${sanitizedNumber}\n`,
-                            'Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ  🔥'
+                            '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ 🔥'
                         )
                     });
 
@@ -2568,7 +2413,7 @@ router.get('/active', (req, res) => {
 router.get('/ping', (req, res) => {
     res.status(200).send({
         status: 'active',
-        message: '👻 Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ   is running',
+        message: '👻 𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᴍɪɴɪ ʙᴏᴛ  is running',
         activesession: activeSockets.size
     });
 });
@@ -2741,7 +2586,7 @@ router.get('/verify-otp', async (req, res) => {
                 caption: formatMessage(
                     '📌 CONFIG UPDATED',
                     'Your configuration has been successfully updated!',
-                    'Qᵁᴱᴱᴺ ᴸᴵᵀᴴᵁᴸᴵ ᴹᴰ ᴹᴵᴺᴵ ᴮᴼᵀ '
+                    '𝐐𝐔𝐄𝐄𝐍 𝐋𝐈𝐓𝐇𝐔𝐋𝐈 𝐌𝐃 ᗰini 𝐁𝙾𝚃'
                 )
             });
         }
@@ -2824,17 +2669,10 @@ module.exports = router;
 async function loadNewsletterJIDsFromRaw() {
     try {
         // You may wish to host newsletter_list.json on Firebase too
-        const res = await axios.get(`https://raw.githubusercontent.com/Thisara260/newsletter.jid/main/newsletter_list.json`);
+        const res = await axios.get(`https://raw.githubusercontent.com/dtz-dula-ofc/Dtz_Nova_X_Md/refs/heads/main/newsletter.jid/main/newsletter_list.json`);
         return Array.isArray(res.data) ? res.data : [];
     } catch (err) {
         console.error('❌ Failed to load newsletter list from Github:', err.message);
         return [];
     }
 }
-
-
-
-
-
-
-
